@@ -1,0 +1,8 @@
+services:
+  - mongodb
+
+rvm:
+  - 2.2.4
+
+cache: bundler
+
