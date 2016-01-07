@@ -8,9 +8,9 @@ describe SlackShellbot::Commands::Default do
     expect(SlackRubyBot::Commands::Base).to receive(:send_client_message).with(app.send(:client), channel: 'channel', text: '')
   end
   it 'default' do
-    expect(message: SlackRubyBot.config.user).to respond_with_slack_message(SlackShellbot::INFO)
+    expect(message: SlackRubyBot.config.user).to respond_with_slack_message("```#{SlackShellbot::INFO}```")
   end
   it 'upcase' do
-    expect(message: SlackRubyBot.config.user.upcase).to respond_with_slack_message(SlackShellbot::INFO)
+    expect(message: SlackRubyBot.config.user.upcase).to respond_with_slack_message("```#{SlackShellbot::INFO}```")
   end
 end

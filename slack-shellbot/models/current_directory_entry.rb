@@ -1,6 +1,6 @@
 class CurrentDirectoryEntry
   attr_accessor :directory
-  delegate :name, :directory_entries, to: :directory
+  delegate :name, :entries, to: :directory
 
   def to_s
     '.'

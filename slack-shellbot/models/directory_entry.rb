@@ -2,31 +2,57 @@ class DirectoryEntry < Entry
   include Enumerable
 
   validate :validate_parent_directory_entry
-  has_many :directory_entries, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
   def mkdir(name)
     DirectoryEntry.create!(
       name: name,
       parent_directory_entry: self
     )
+  rescue Mongo::Error::OperationFailure => e
+    if e.message.include?('E11000')
+      raise Errno::EEXIST, name
+    else
+      raise e
+    end
   end
 
   def rmdir(name)
-    dir = directory_entries.where(name: name).first
-    fail Errno::ENOENT, "#{path}/#{name}" unless dir
+    dir = entries.where(_type: 'DirectoryEntry', name: name).first
+    fail Errno::ENOENT, name unless dir
     dir.destroy
     dir
   end
 
+  def touch(name)
+    FileEntry.create!(
+      name: name,
+      parent_directory_entry: self
+    )
+  rescue Mongo::Error::OperationFailure => e
+    if e.message.include?('E11000')
+      raise Errno::EEXIST, name
+    else
+      raise e
+    end
+  end
+
+  def rm(name)
+    file = entries.where(_type: 'FileEntry', name: name).first
+    fail Errno::ENOENT, name unless file
+    file.destroy
+    file
+  end
+
   def count
-    2 + directory_entries.count
+    2 + entries.count
   end
 
   def each
     return enum_for(:each) unless block_given?
     yield CurrentDirectoryEntry.new(self)
     yield ParentDirectoryEntry.new(self)
-    directory_entries.each do |dir|
+    entries.asc(:name).each do |dir|
       yield dir
     end
   end

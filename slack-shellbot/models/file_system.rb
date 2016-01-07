@@ -17,7 +17,7 @@ class FileSystem
           when '..'
             current_directory_entry.parent_directory_entry || current_directory_entry
           else
-            dir = current_directory_entry.directory_entries.where(name: name).first
+            dir = current_directory_entry.entries.where(_type: 'DirectoryEntry', name: name).first
             fail Errno::ENOENT, Entry.combine_path(current_directory_entry.path, name) unless dir
             dir
           end
