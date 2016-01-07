@@ -11,8 +11,16 @@ class FileSystem
   before_create :ensure_root_directory_entry!
 
   def cd(name)
-    dir = current_directory_entry.directory_entries.where(name: name).first
-    fail Errno::ENOENT, Entry.combine_path(current_directory_entry.path, name) unless dir
+    dir = case name
+          when '.'
+            current_directory_entry
+          when '..'
+            current_directory_entry.parent_directory_entry || current_directory_entry
+          else
+            dir = current_directory_entry.directory_entries.where(name: name).first
+            fail Errno::ENOENT, Entry.combine_path(current_directory_entry.path, name) unless dir
+            dir
+          end
     update_attributes!(current_directory_entry: dir)
     dir
   end

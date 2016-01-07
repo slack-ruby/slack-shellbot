@@ -16,6 +16,14 @@ describe FileSystem do
         root.mkdir('foobar')
       end.to change(DirectoryEntry, :count).by(1)
     end
+    it 'cd .' do
+      fs.cd('.')
+      expect(fs.current_directory_entry).to eq fs.root_directory_entry
+    end
+    it 'cd .,' do
+      fs.cd('..')
+      expect(fs.current_directory_entry).to eq fs.root_directory_entry
+    end
     context 'with a directory' do
       let!(:dir) { root.mkdir('test') }
       it 'cd' do
@@ -49,6 +57,33 @@ describe FileSystem do
         it 'path' do
           expect(dir.path).to eq '/test'
           expect(subdir.path).to eq '/test/foo'
+        end
+        context 'inside a subdirectory' do
+          before do
+            fs.cd('test')
+            fs.cd('foo')
+          end
+          it 'cd .' do
+            fs.cd('.')
+            expect(fs.current_directory_entry).to eq subdir
+          end
+          it 'cd .,' do
+            fs.cd('..')
+            expect(fs.current_directory_entry).to eq dir
+          end
+        end
+      end
+      context 'inside a directory' do
+        before do
+          fs.cd('test')
+        end
+        it 'cd .' do
+          fs.cd('.')
+          expect(fs.current_directory_entry).to eq dir
+        end
+        it 'cd .,' do
+          fs.cd('..')
+          expect(fs.current_directory_entry).to eq fs.root_directory_entry
         end
       end
     end
