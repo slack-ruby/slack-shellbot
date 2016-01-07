@@ -18,6 +18,10 @@ describe FileSystem do
     end
     context 'with a directory' do
       let!(:dir) { root.mkdir('test') }
+      it 'cd' do
+        fs.cd('test')
+        expect(fs.current_directory_entry.path).to eq '/test'
+      end
       it 'rmdir' do
         expect do
           root.rmdir('test')

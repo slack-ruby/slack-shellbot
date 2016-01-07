@@ -14,7 +14,7 @@ help       - get this helpful message
       def self.call(client, data, _match)
         send_message client, data.channel, [HELP, SlackShellbot::INFO].join("\n")
         send_gif client, data.channel, 'help'
-        logger.info "HELP: #{client.team} - #{data.user}"
+        logger.info "HELP: #{client.team}, user=#{data.user}"
       end
     end
   end

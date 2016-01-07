@@ -5,7 +5,7 @@ module SlackShellbot
         fs = client.team.fs[data.channel]
         dirs = fs.current_directory_entry.map(&:to_s).join("\n")
         send_message client, data.channel, "```#{dirs}```"
-        logger.info "PWD: #{client.team}, #{fs}, #{data.user}"
+        logger.info "PWD: #{client.team}, #{fs}, user=#{data.user}"
       end
     end
   end

@@ -14,17 +14,12 @@ class Entry
   belongs_to :parent_directory_entry, class_name: 'DirectoryEntry', inverse_of: :directories, index: true
   index({ name: 1, parent_directory_entry_id: 1 }, unique: true)
 
+  def self.combine_path(path, name)
+    [path, name].join(path[-1] == '/' ? nil : '/')
+  end
+
   def path
-    if parent_directory_entry
-      case parent_directory_entry_path = parent_directory_entry.path
-      when '/'
-        "/#{name}"
-      else
-        "#{parent_directory_entry_path}/#{name}"
-      end
-    else
-      name
-    end
+    parent_directory_entry ? Entry.combine_path(parent_directory_entry.path, name) : name
   end
 
   protected

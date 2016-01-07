@@ -4,7 +4,7 @@ module SlackShellbot
       def self.call(client, data, _match)
         fs = client.team.fs[data.channel]
         send_message client, data.channel, "```#{fs.current_directory_entry.path}```"
-        logger.info "PWD: #{client.team}, #{fs}, #{data.user}"
+        logger.info "PWD: #{client.team}, #{fs}, user=#{data.user}"
       end
     end
   end
