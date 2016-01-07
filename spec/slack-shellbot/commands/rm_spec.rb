@@ -8,11 +8,11 @@ describe SlackShellbot::Commands::Rm do
       expect(message: "#{SlackRubyBot.config.user} touch test.txt", channel: 'channel').to respond_with_slack_message(
         '```/test.txt```'
       )
-      expect {
+      expect do
         expect(message: "#{SlackRubyBot.config.user} rm test.txt", channel: 'channel').to respond_with_slack_message(
           '```/test.txt```'
         )
-      }.to change(FileEntry, :count).by(-1)
+      end.to change(FileEntry, :count).by(-1)
     end
   end
 end

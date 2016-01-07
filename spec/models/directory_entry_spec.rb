@@ -14,9 +14,9 @@ describe DirectoryEntry do
       expect(dir.count).to eq 3
     end
     it 'rm' do
-      expect {
+      expect do
         expect(dir.rm('test')).to be_a FileEntry
-      }.to change(FileEntry, :count).by(-1)
+      end.to change(FileEntry, :count).by(-1)
     end
   end
 end

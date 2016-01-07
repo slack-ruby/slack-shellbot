@@ -6,6 +6,7 @@ module SlackRubyBot
         alias_method :_send_message, :send_message
 
         def send_message(client, channel, text)
+          Thread.current[:stdout] << text
           _send_message client, channel, "```#{text}```"
         end
 

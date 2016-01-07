@@ -24,22 +24,27 @@ class DirectoryEntry < Entry
     dir
   end
 
+  def find(name)
+    file = entries.where(_type: 'FileEntry', name: name).first
+    fail Errno::ENOENT, name unless file
+    file
+  end
+
   def touch(name)
-    FileEntry.create!(
+    entries.where(_type: 'FileEntry', name: name).first || FileEntry.create!(
       name: name,
       parent_directory_entry: self
     )
-  rescue Mongo::Error::OperationFailure => e
-    if e.message.include?('E11000')
-      raise Errno::EEXIST, name
-    else
-      raise e
-    end
+  end
+
+  def write(name, data)
+    file_entry = touch(name)
+    file_entry.update_attributes!(data: data)
+    file_entry
   end
 
   def rm(name)
-    file = entries.where(_type: 'FileEntry', name: name).first
-    fail Errno::ENOENT, name unless file
+    file = find(name)
     file.destroy
     file
   end
