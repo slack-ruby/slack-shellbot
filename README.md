@@ -10,7 +10,7 @@ Or roll your own ...
 
 A shell bot for Slack.
 
-TODO
+![](public/img/shell.gif)
 
 ## Installation
 
