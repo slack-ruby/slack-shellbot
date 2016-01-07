@@ -3,9 +3,11 @@ class FileSystem
   include Mongoid::Timestamps
 
   field :channel, type: String
+  validates_presence_of :channel
   belongs_to :team
+  has_many :entries, dependent: :destroy
 
-  belongs_to :root_directory_entry, dependent: :destroy, inverse_of: nil
+  belongs_to :root_directory_entry, inverse_of: nil
   belongs_to :current_directory_entry, class_name: 'DirectoryEntry', inverse_of: nil
 
   before_create :ensure_root_directory_entry!
@@ -37,7 +39,7 @@ class FileSystem
   private
 
   def ensure_root_directory_entry!
-    self.root_directory_entry = RootDirectoryEntry.create!
+    self.root_directory_entry = RootDirectoryEntry.create!(file_system: self)
     self.current_directory_entry = root_directory_entry
   end
 end

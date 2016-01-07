@@ -7,7 +7,8 @@ class DirectoryEntry < Entry
   def mkdir(name)
     DirectoryEntry.create!(
       name: name,
-      parent_directory_entry: self
+      parent_directory_entry: self,
+      file_system: file_system
     )
   rescue Mongo::Error::OperationFailure => e
     if e.message.include?('E11000')
@@ -33,7 +34,8 @@ class DirectoryEntry < Entry
   def touch(name)
     entries.where(_type: 'FileEntry', name: name).first || FileEntry.create!(
       name: name,
-      parent_directory_entry: self
+      parent_directory_entry: self,
+      file_system: file_system
     )
   end
 

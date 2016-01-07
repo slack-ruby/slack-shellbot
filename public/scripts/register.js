@@ -42,7 +42,7 @@ $(document).ready(function() {
         code: code
       },
       success: function(data) {
-        SlackShellbot.message('Team successfully registered!<br><br>DM <b>@shell</b> or create a <b>#bash</b> channel and invite <b>@shell</b> to it.');
+        SlackShellbot.message('Team successfully registered!<br><br>DM <b>@sh</b> or create a <b>#shell</b> channel and invite <b>@sh</b> to it.');
       },
       error: SlackShellbot.error
     });
