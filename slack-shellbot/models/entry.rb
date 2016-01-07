@@ -25,6 +25,7 @@ class Entry
   protected
 
   def validate_name
+    errors.add(:name, 'Invalid file or directory name.') if name && name.match(/\A\.+\z/)
     errors.add(:name, 'Invalid file or directory name.') unless name && name.match(/\A([^\W]|[\.-_%#\ +])+\z/)
   end
 end

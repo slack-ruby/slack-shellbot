@@ -16,6 +16,11 @@ describe FileSystem do
         root.mkdir('foobar')
       end.to change(DirectoryEntry, :count).by(1)
     end
+    it 'mkdir .' do
+      expect do
+        root.mkdir('.')
+      end.to raise_error Mongoid::Errors::Validations, /Invalid file or directory name./
+    end
     it 'cd .' do
       fs.cd('.')
       expect(fs.current_directory_entry).to eq fs.root_directory_entry

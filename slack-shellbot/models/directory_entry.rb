@@ -15,6 +15,7 @@ class DirectoryEntry < Entry
     dir = directory_entries.where(name: name).first
     fail Errno::ENOENT, "#{path}/#{name}" unless dir
     dir.destroy
+    dir
   end
 
   def count
