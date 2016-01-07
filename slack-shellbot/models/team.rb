@@ -16,6 +16,8 @@ class Team
   validates_presence_of :token
   validates_presence_of :team_id
 
+  has_many :file_systems
+
   def deactivate!
     update_attributes!(active: false)
   end
@@ -32,6 +34,10 @@ class Team
     }.map do |k, v|
       "#{k}=#{v}" if v
     end.compact.join(', ')
+  end
+
+  def fs
+    @fs ||= FileSystemMap.new(self)
   end
 
   def ping!

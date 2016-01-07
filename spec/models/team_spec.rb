@@ -36,4 +36,24 @@ describe Team do
       expect(Team.find(inactive_team_a_month_ago.id)).to be nil
     end
   end
+  context '#fs' do
+    let!(:team) { Fabricate(:team) }
+    it 'is a map' do
+      expect(team.fs).to be_a FileSystemMap
+    end
+    it 'creates a file system for a channel' do
+      expect do
+        expect(team.fs['channel']).to be_a FileSystem
+      end.to change(FileSystem, :count).by(1)
+    end
+    context 'filesystem' do
+      let!(:fs) { team.fs['channel'] }
+      it 'changes directory to root' do
+        expect(fs.current_directory_entry).to be_a RootDirectoryEntry
+      end
+      it 'saves directory to root' do
+        expect(fs.current_directory_entry).to eq fs.root_directory_entry
+      end
+    end
+  end
 end

@@ -1,0 +1,2 @@
+class FileEntry < Entry
+end
