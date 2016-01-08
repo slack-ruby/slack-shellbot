@@ -11,7 +11,7 @@ module SlackRubyBot
           data.text = command if command
         end
         result = _message(client, data)
-        if result && redirect_to.length > 0
+        if result && redirect_to && redirect_to.length > 0
           redirect_to = Shellwords.split(redirect_to).first
           fs = client.team.fs[data.channel]
           file_entry = fs.current_directory_entry.write(redirect_to, Thread.current[:stdout].join("\n"))
