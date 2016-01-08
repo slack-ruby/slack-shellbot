@@ -21,23 +21,6 @@ module SlackRubyBot
           send_message_with_gif client, data.channel, "```#{e.message}```", 'error'
           true
         end
-
-        # unescape a Slack message per https://api.slack.com/docs/formatting
-        def unescape(message)
-          CGI.unescapeHTML(message.gsub(/[“”]/, '"').gsub(/<(?<sign>[?@#!]?)(?<dt>.*?)>/) do |_match|
-            sign = $~[:sign]
-            dt = $~[:dt]
-            rhs = dt.split('|', 2).last
-            case sign
-            when '@', '!'
-              "@#{rhs}"
-            when '#'
-              "##{rhs}"
-            else
-              rhs
-            end
-          end)
-        end
       end
     end
   end

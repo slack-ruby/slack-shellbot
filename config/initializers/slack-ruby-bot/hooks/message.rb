@@ -6,7 +6,7 @@ module SlackRubyBot
         Thread.current[:stdout] = []
         data = Hashie::Mash.new(data)
         if data.key?(:text)
-          data.text = SlackRubyBot::Commands::Base.unescape(data.text)
+          data.text = Slack::Messages::Formatting.unescape(data.text)
           command, redirect_to = split_redirect(data.text)
           data.text = command if command
         end
