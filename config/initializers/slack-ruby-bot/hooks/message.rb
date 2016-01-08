@@ -6,9 +6,8 @@ module SlackRubyBot
         Thread.current[:stdout] = []
         data = Hashie::Mash.new(data)
         if data.key?(:text)
-          data.text = CGI.unescapeHTML(data.text)
-          return if data.text.include?('<') # whoa
-          command, redirect_to = data.text.split('>', 2) if data.key?(:text)
+          data.text = SlackRubyBot::Commands::Base.unescape(data.text)
+          command, redirect_to = data.text.split('>', 2)
           data.text = command.rstrip if command
         end
         result = _message(client, data)
