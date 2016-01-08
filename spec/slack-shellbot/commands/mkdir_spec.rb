@@ -9,5 +9,10 @@ describe SlackShellbot::Commands::Mkdir do
         '```/test```'
       )
     end
+    it 'makes a directory with a space' do
+      expect(message: "#{SlackRubyBot.config.user} mkdir \"foo bar\"", channel: 'channel').to respond_with_slack_message(
+        '```/foo bar```'
+      )
+    end
   end
 end

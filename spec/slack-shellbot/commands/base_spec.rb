@@ -29,5 +29,8 @@ describe SlackRubyBot::Commands::Base do
     it 'user' do
       expect(SlackRubyBot::Commands::Base.unescape('<@U02BEFY4U> ^^^')).to eq '@U02BEFY4U ^^^'
     end
+    it 'quote' do
+      expect(SlackRubyBot::Commands::Base.unescape('"hello“')).to eq '"hello"'
+    end
   end
 end

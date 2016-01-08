@@ -3,7 +3,7 @@ module SlackShellbot
     class Touch < SlackRubyBot::Commands::Base
       def self.call(client, data, match)
         fs = client.team.fs[data.channel]
-        file = match['expression'] if match.names.include?('expression')
+        file = Shellwords.split(match['expression']).first if match.names.include?('expression')
         fail 'usage: touch <file> ...' unless file
         file_entry = fs.current_directory_entry.touch(file)
         send_message client, data.channel, file_entry.path
