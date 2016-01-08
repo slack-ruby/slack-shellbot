@@ -25,8 +25,8 @@ module SlackRubyBot
         # unescape a Slack message per https://api.slack.com/docs/formatting
         def unescape(message)
           CGI.unescapeHTML(message.gsub(/<(?<sign>[?@#!]?)(?<dt>.*?)>/) do |_match|
-            sign = $LAST_MATCH_INFO[:sign]
-            dt = $LAST_MATCH_INFO[:dt]
+            sign = $~[:sign]
+            dt = $~[:dt]
             rhs = dt.split('|', 2).last
             case sign
             when '@', '!'

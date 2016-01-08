@@ -26,5 +26,8 @@ describe SlackRubyBot::Commands::Base do
     it 'redirect' do
       expect(SlackRubyBot::Commands::Base.unescape('Hello <@U123|bob> &gt; file.txt')).to eq 'Hello @bob > file.txt'
     end
+    it 'user' do
+      expect(SlackRubyBot::Commands::Base.unescape('<@U02BEFY4U> ^^^')).to eq '@U02BEFY4U ^^^'
+    end
   end
 end
