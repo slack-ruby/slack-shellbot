@@ -7,6 +7,7 @@ module SlackShellbot
       create_indexes!
       migrate_from_single_team!
       purge_inactive_teams!
+      configure_global_aliases!
     end
 
     def self.instance
@@ -55,6 +56,12 @@ module SlackShellbot
 
     def purge_inactive_teams!
       Team.purge!
+    end
+
+    def configure_global_aliases!
+      SlackRubyBot.configure do |config|
+        config.aliases = ENV['SLACK_RUBY_BOT_ALIASES'].split(' ') if ENV['SLACK_RUBY_BOT_ALIASES']
+      end
     end
   end
 end

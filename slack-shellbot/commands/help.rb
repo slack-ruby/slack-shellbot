@@ -9,6 +9,7 @@ General
 
 help               - get this helpful message
 uname              - print the operating system name
+whoami             - print your username
 
 Shell
 -----
