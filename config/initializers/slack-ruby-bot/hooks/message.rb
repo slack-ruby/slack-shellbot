@@ -7,11 +7,11 @@ module SlackRubyBot
         data = Hashie::Mash.new(data)
         if data.key?(:text)
           data.text = SlackRubyBot::Commands::Base.unescape(data.text)
-          command, redirect_to = data.text.split('>', 2)
-          data.text = command.rstrip if command
+          command, redirect_to = split_redirect(data.text)
+          data.text = command if command
         end
         result = _message(client, data)
-        if result && redirect_to
+        if result && redirect_to.length > 0
           redirect_to = Shellwords.split(redirect_to).first
           fs = client.team.fs[data.channel]
           file_entry = fs.current_directory_entry.write(redirect_to, Thread.current[:stdout].join("\n"))
@@ -21,6 +21,17 @@ module SlackRubyBot
         result
       ensure
         Thread.current[:stdout] = nil
+      end
+
+      def split_redirect(text)
+        parts = Shellwords.split(text)
+        command = []
+        while parts.any?
+          part = parts.shift
+          break if part == '>'
+          command << part
+        end
+        [command.shelljoin, parts.shelljoin]
       end
     end
   end
