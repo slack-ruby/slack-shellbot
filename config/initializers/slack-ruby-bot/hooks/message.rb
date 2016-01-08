@@ -10,10 +10,16 @@ module SlackRubyBot
           command, redirect_to = split_redirect(data.text)
           data.text = command if command
         end
-        result = _message(client, data)
+        fs = client.team.fs[data.channel] if data.channel
+        if fs && fs.program
+          logger.info "PROGRAM: #{client.team}, #{fs}, program=#{fs.program._type}, user=#{data.user}"
+          SlackRubyBot::Commands::Base._send_message client, data.channel, "```#{fs.program.message(client, data)}```"
+          result = true
+        else
+          result = _message(client, data)
+        end
         if result && redirect_to && redirect_to.length > 0
           redirect_to = Shellwords.split(redirect_to).first
-          fs = client.team.fs[data.channel]
           file_entry = fs.current_directory_entry.write(redirect_to, Thread.current[:stdout].join("\n"))
           SlackRubyBot::Commands::Base._send_message client, data.channel, "```#{file_entry.size} byte(s) written```"
           logger.info "WRITE: #{client.team}, #{fs}, file=#{file_entry}, user=#{data.user}"

@@ -23,6 +23,11 @@ touch <file>       - create a file
 rm <file>          - remove a file
 cat <file>         - show contents of a file
 
+Programs
+--------
+
+vi                 - a basic vi-like editor, :wq to quit
+
 EOS
       def self.call(client, data, _match)
         send_message client, data.channel, [HELP, SlackShellbot::INFO].join("\n")

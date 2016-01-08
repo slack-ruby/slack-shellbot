@@ -11,6 +11,7 @@ class FileSystem
   belongs_to :current_directory_entry, class_name: 'DirectoryEntry', inverse_of: nil
 
   before_create :ensure_root_directory_entry!
+  has_one :program
 
   def cd(name)
     dir = case name
