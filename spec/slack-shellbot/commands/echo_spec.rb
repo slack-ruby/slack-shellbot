@@ -17,10 +17,9 @@ describe SlackShellbot::Commands::Echo do
     end
     it 'pipe into a file' do
       expect do
-        allow(SlackRubyBot::Commands::Base).to receive(:send_client_message).with(client, channel: 'channel', text: '```hi```')
-        expect(message: "#{SlackRubyBot.config.user} echo hi > \"text file.txt\"", channel: 'channel').to respond_with_slack_message(
-          '```2 byte(s) written```'
-        )
+        expect(client).to receive(:_say).with(channel: 'channel', text: '```hi```')
+        expect(client).to receive(:_say).with(channel: 'channel', text: '```2 byte(s) written```')
+        app.send(:message, client, text: "#{SlackRubyBot.config.user} echo hi > \"text file.txt\"", channel: 'channel')
       end.to change(FileEntry, :count).by(1)
       root = team.fs['channel'].root_directory_entry
       expect(root.entries.count).to eq 1

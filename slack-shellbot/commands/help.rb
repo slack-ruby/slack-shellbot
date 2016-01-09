@@ -30,8 +30,8 @@ vi                 - a basic vi-like editor, :wq to quit
 
 EOS
       def self.call(client, data, _match)
-        send_message client, data.channel, [HELP, SlackShellbot::INFO].join("\n")
-        send_gif client, data.channel, 'help'
+        client.say(channel: data.channel, text: [HELP, SlackShellbot::INFO].join("\n"))
+        client.say(channel: data.channel, gif: 'help')
         logger.info "HELP: #{client.team}, user=#{data.user}"
       end
     end

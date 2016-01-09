@@ -6,7 +6,7 @@ module SlackShellbot
         directory = Shellwords.split(match['expression']).first if match.names.include?('expression')
         fail 'usage: cd directory ...' unless directory
         directory_entry = fs.cd(directory)
-        send_message client, data.channel, directory_entry.path
+        client.say(channel: data.channel, text: directory_entry.path)
         logger.info "CD: #{client.team}, #{fs}, directory=#{directory}, user=#{data.user}"
       end
     end
