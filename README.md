@@ -8,9 +8,9 @@ Or roll your own ...
 [![Build Status](https://travis-ci.org/dblock/slack-shellbot.svg)](https://travis-ci.org/dblock/slack-shellbot)
 [![Code Climate](https://codeclimate.com/github/dblock/slack-shellbot/badges/gpa.svg)](https://codeclimate.com/github/dblock/slack-shellbot)
 
-A shell bot for Slack.
+A shell bot for Slack. A demo is worth a thousand words.
 
-![](public/img/shell.gif)
+![](public/img/vi.gif)
 
 ## Installation
 
