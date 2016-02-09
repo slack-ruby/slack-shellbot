@@ -7,7 +7,7 @@ module SlackShellbot
       fail 'Missing team' unless @team
       options = { token: @team.token }
       super(options)
-      client.team = @team
+      client.owner = @team
     end
 
     def restart!(wait = 1)
@@ -16,7 +16,7 @@ module SlackShellbot
       EM.next_tick do
         logger.info "#{team.name}: socket closed, restarting ..."
         SlackShellbot::Service.restart! team, self, wait
-        client.team = team
+        client.owner = team
       end
     end
   end
