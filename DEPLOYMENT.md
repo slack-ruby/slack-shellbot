@@ -1,6 +1,6 @@
 ### Slack-Shellbot
 
-[![Add to Slack](https://platform.slack-edge.com/img/add_to_slack@2x.png)](http://shlack.dblock.org)
+[![Add to Slack](https://platform.slack-edge.com/img/add_to_slack@2x.png)](http://shell.playplay.io)
 
 ## Deploy Your Own Slack-Shellbot
 
