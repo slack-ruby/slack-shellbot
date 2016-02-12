@@ -27,6 +27,7 @@ module SlackRubyBot
         result
       ensure
         Thread.current[:stdout] = nil
+        GC::OOB.run
       end
 
       def split_redirect(text)

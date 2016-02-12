@@ -17,6 +17,8 @@ module Api
 
     def self.instance
       @instance ||= Rack::Builder.new do
+        use GC::OOB::UnicornMiddleware
+
         use Rack::Cors do
           allow do
             origins '*'
