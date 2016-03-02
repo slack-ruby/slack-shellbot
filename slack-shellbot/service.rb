@@ -54,7 +54,7 @@ module SlackShellbot
           logger.error "#{team.name}: #{e.message}, team will be deactivated."
           team.deactivate!
         else
-          logger.error "#{team.name}: #{e.message}, restarting in #{wait} second(s)."
+          logger.error "#{team.name}: #{e.class}, #{e.message}, restarting in #{wait} second(s)."
           sleep(wait)
           EM.next_tick do
             restart! team, server, [wait * 2, 60].min
