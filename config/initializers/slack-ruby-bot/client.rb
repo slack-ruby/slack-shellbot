@@ -5,13 +5,17 @@ module SlackRubyBot
 
     alias_method :_say, :say
 
-    def say(options = {})
+    def update(options = {})
+      say(options, :chat_update)
+    end
+
+    def say(options = {}, method = :chat_postMessage)
       text = options[:text]
       if text
         Thread.current[:stdout] << text
-        _say options.merge(text: "```#{text}```")
+        web_client.send(method, options.merge(text: "```#{text}```", as_user: true))
       else
-        _say options
+        web_client.send(method, options.merge(as_user: true))
       end
     end
   end
