@@ -26,7 +26,9 @@ cat <file>         - show contents of a file
 Programs
 --------
 
-vi                 - a basic vi-like editor, :wq to quit
+vi                 - a basic vi-like in-place editor
+ :wq               - quit and save current file
+ :q                - quit without saving
 
 EOS
       def self.call(client, data, _match)

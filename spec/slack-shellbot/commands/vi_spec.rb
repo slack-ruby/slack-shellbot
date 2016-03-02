@@ -39,6 +39,13 @@ describe SlackShellbot::Commands::Vi do
         app.send(:message, client, text: "#{SlackRubyBot.config.user} :wq", channel: 'channel')
         expect(file.reload.data).to eq ['hello world', 'another line'].join("\n")
       end
+      it 'quits without saving file' do
+        expect(client).to receive(:say).with(channel: 'channel', text: "\hello world\nanother line\n~|\n\n\n\"/name.txt\" 2 line(s), 24 character(s)")
+        app.send(:message, client, text: "#{SlackRubyBot.config.user} another line", channel: 'channel')
+        expect(client).to receive(:say).with(channel: 'channel', text: 'quit without saving /name.txt')
+        app.send(:message, client, text: "#{SlackRubyBot.config.user} :q", channel: 'channel')
+        expect(file.reload.data).to eq ['hello world'].join("\n")
+      end
     end
   end
 end

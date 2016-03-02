@@ -19,6 +19,9 @@ class ViProgram < Program
     match = text.match(/^(?<bot>\S*)[\s]*(?<expression>.*)$/)
     expression = match['expression'] if match.names.include?('expression')
     case expression
+    when ':q' then
+      terminate!
+      "quit without saving #{path}"
     when ':wq' then
       file_system.current_directory_entry.write(filename, data)
       terminate!
