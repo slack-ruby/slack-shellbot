@@ -33,7 +33,7 @@ vi                 - a basic vi-like in-place editor
 EOS
       def self.call(client, data, _match)
         client.say(channel: data.channel, text: [HELP, SlackShellbot::INFO].join("\n"))
-        client.say(channel: data.channel, gif: 'help')
+        client._say(channel: data.channel, gif: 'help')
         logger.info "HELP: #{client.owner}, user=#{data.user}"
       end
     end
