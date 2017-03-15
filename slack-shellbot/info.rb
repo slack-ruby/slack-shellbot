@@ -1,5 +1,5 @@
 module SlackShellbot
-  INFO = <<-EOS
+  INFO = <<-EOS.freeze
 Shellbot #{SlackShellbot::VERSION}
 
 © 2016 Daniel Doubrovkine & Contributors, MIT License

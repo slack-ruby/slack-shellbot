@@ -1,40 +1,36 @@
 source 'http://rubygems.org'
 
-ruby '2.2.4'
+ruby '2.3.1'
 
-gem 'slack-ruby-bot', '~> 0.7.0'
-gem 'mongoid', '~> 5.0.0'
-gem 'unicorn'
-gem 'grape', '~> 0.13.0'
-gem 'grape-roar'
-gem 'rack-cors'
-gem 'kaminari', '~> 0.16.1', require: 'kaminari/grape'
-gem 'grape-swagger'
+gem 'giphy'
+gem 'jsonpath'
+gem 'kaminari-grape'
+gem 'mongoid', '~> 5.1.0'
 gem 'mongoid-scroll'
-gem 'rack-robotz'
-gem 'newrelic_rpm'
 gem 'newrelic-slack-ruby-bot'
-gem 'rack-rewrite'
-gem 'gctools', require: 'gctools/oobgc'
+gem 'newrelic_rpm'
+gem 'rack-robotz'
+gem 'rack-server-pages'
+gem 'slack-ruby-bot-server'
 
 group :development, :test do
-  gem 'rake', '~> 10.4'
-  gem 'rubocop', '0.34.2'
   gem 'foreman'
+  gem 'rake'
+  gem 'rubocop'
 end
 
 group :development do
-  gem 'mongoid-shell'
   gem 'heroku'
+  gem 'mongoid-shell'
 end
 
 group :test do
-  gem 'rspec'
-  gem 'rack-test'
-  gem 'webmock'
-  gem 'vcr'
+  gem 'database_cleaner'
   gem 'fabrication'
   gem 'faker'
-  gem 'database_cleaner'
   gem 'hyperclient'
+  gem 'rack-test'
+  gem 'rspec'
+  gem 'vcr'
+  gem 'webmock'
 end

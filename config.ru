@@ -1,5 +1,11 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
+ENV['RACK_ENV'] ||= 'development'
+
+require 'bundler/setup'
+Bundler.require :default, ENV['RACK_ENV']
+
+require 'slack-ruby-bot-server'
 require 'slack-shellbot'
 
 if ENV['RACK_ENV'] == 'development'
@@ -15,12 +21,7 @@ SlackShellbot::App.instance.prepare!
 Thread.abort_on_exception = true
 
 Thread.new do
-  EM.run do
-    Thread.pass until EM.reactor_running?
-    EM.next_tick do
-      SlackShellbot::Service.start_from_database!
-    end
-  end
+  SlackShellbot::Service.instance.start_from_database!
 end
 
 run Api::Middleware.instance

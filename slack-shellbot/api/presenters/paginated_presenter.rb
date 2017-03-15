@@ -19,14 +19,14 @@ module Api
 
       def request_url(opts)
         request = Grape::Request.new(opts[:env])
-        "#{request.base_url}#{opts[:env]['PATH_INFO']}"
+        "#{request.base_url}#{opts[:env]['PATH_INFO'].chomp('/')}"
       end
 
       # replace the page and offset parameters in the query string
       def query_string_for_cursor(cursor, opts)
         qs = Hashie::Mash.new(Rack::Utils.parse_nested_query(opts[:env]['QUERY_STRING']))
         if cursor
-          qs.merge!(cursor: cursor)
+          qs[:cursor] = cursor
           qs.delete(:offset)
         end
         "?#{qs.to_query}" unless qs.empty?

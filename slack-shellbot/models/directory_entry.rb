@@ -20,14 +20,14 @@ class DirectoryEntry < Entry
 
   def rmdir(name)
     dir = entries.where(_type: 'DirectoryEntry', name: name).first
-    fail Errno::ENOENT, name unless dir
+    raise Errno::ENOENT, name unless dir
     dir.destroy
     dir
   end
 
   def find(name)
     file = entries.where(_type: 'FileEntry', name: name).first
-    fail Errno::ENOENT, name unless file
+    raise Errno::ENOENT, name unless file
     file
   end
 

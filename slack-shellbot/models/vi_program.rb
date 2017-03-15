@@ -18,19 +18,21 @@ class ViProgram < Program
     text, = SlackRubyBot::Commands::Base.send(:parse, client, request)
     match = text.match(/^(?<bot>\S*)[\s]*(?<expression>.*)$/)
     expression = match['expression'] if match.names.include?('expression')
-    case expression
-    when ':q' then
-      terminate!
-      "quit without saving #{path}"
-    when ':wq' then
-      file_system.current_directory_entry.write(filename, data)
-      terminate!
-      "written #{path}, #{lines} line(s), #{data.length} character(s)"
-    else
-      update_attributes!(data: [data, expression].join("\n"))
-      save!
-      to_s
-    end if expression
+    if expression
+      case expression
+      when ':q' then
+        terminate!
+        "quit without saving #{path}"
+      when ':wq' then
+        file_system.current_directory_entry.write(filename, data)
+        terminate!
+        "written #{path}, #{lines} line(s), #{data.length} character(s)"
+      else
+        update_attributes!(data: [data, expression].join("\n"))
+        save!
+        to_s
+      end
+    end
   end
 
   private
@@ -48,7 +50,7 @@ class ViProgram < Program
     ensure_data
     [
       "\"#{path}\"",
-      data && data.length > 0 ? "#{lines} line(s), #{data.length} character(s)" : '[New File]'
+      data && !data.empty? ? "#{lines} line(s), #{data.length} character(s)" : '[New File]'
     ].join(' ')
   end
 
