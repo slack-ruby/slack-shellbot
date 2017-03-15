@@ -2,6 +2,16 @@ module SlackRubyBot
   class Client < Slack::RealTime::Client
     alias _say say
 
+    def update(options = {})
+      text = options[:text]
+      if text
+        Thread.current[:stdout] << text
+        web_client.chat_update(options.merge(text: "```#{text}```", as_user: true))
+      else
+        web_client.chat_update(method, options.merge(as_user: true))
+      end
+    end
+
     def say(options = {})
       text = options[:text]
       if text
