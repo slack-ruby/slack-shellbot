@@ -1,19 +1,19 @@
 # Contributing to SlackShellbot
 
-This project is work of [many contributors](https://github.com/dblock/slack-shellbot/graphs/contributors).
+This project is work of [many contributors](https://github.com/slack-ruby/slack-shellbot/graphs/contributors).
 
-You're encouraged to submit [pull requests](https://github.com/dblock/slack-shellbot/pulls), [propose features and discuss issues](https://github.com/dblock/slack-shellbot/issues).
+You're encouraged to submit [pull requests](https://github.com/slack-ruby/slack-shellbot/pulls), [propose features and discuss issues](https://github.com/slack-ruby/slack-shellbot/issues).
 
 In the examples below, substitute your Github username for `contributor` in URLs.
 
 ## Fork the Project
 
-Fork the [project on Github](https://github.com/dblock/slack-shellbot) and check out your copy.
+Fork the [project on Github](https://github.com/slack-ruby/slack-shellbot) and check out your copy.
 
 ```
 git clone https://github.com/contributor/slack-shellbot.git
 cd slack-shellbot
-git remote add upstream https://github.com/dblock/slack-shellbot.git
+git remote add upstream https://github.com/slack-ruby/slack-shellbot.git
 ```
 
 ## Create a Topic Branch
@@ -102,7 +102,7 @@ git push origin my-feature-branch -f
 Update the [CHANGELOG](CHANGELOG.md) with the pull request number. A typical entry looks as follows.
 
 ```
-* [#123](https://github.com/dblock/slack-shellbot/pull/123): Reticulated splines - [@contributor](https://github.com/contributor).
+* [#123](https://github.com/slack-ruby/slack-shellbot/pull/123): Reticulated splines - [@contributor](https://github.com/contributor).
 ```
 
 Amend your previous commit and force push the changes.

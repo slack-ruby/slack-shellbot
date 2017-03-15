@@ -5,8 +5,8 @@ Slack-Shellbot
 
 Or roll your own ...
 
-[![Build Status](https://travis-ci.org/dblock/slack-shellbot.svg)](https://travis-ci.org/dblock/slack-shellbot)
-[![Code Climate](https://codeclimate.com/github/dblock/slack-shellbot/badges/gpa.svg)](https://codeclimate.com/github/dblock/slack-shellbot)
+[![Build Status](https://travis-ci.org/slack-ruby/slack-shellbot.svg)](https://travis-ci.org/slack-ruby/slack-shellbot)
+[![Code Climate](https://codeclimate.com/github/slack-ruby/slack-shellbot/badges/gpa.svg)](https://codeclimate.com/github/slack-ruby/slack-shellbot)
 
 A shell bot for Slack. A demo is worth a thousand words.
 
@@ -29,6 +29,6 @@ This bot is built with [slack-ruby-bot](https://github.com/dblock/slack-ruby-bot
 
 ## Copyright and License
 
-Copyright (c) 2016, Daniel Doubrovkine, Artsy and [Contributors](CHANGELOG.md).
+Copyright (c) 2016-2017, Daniel Doubrovkine, Artsy and [Contributors](CHANGELOG.md).
 
 This project is licensed under the [MIT License](LICENSE.md).

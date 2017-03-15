@@ -1,7 +1,7 @@
 {
 	"name": "Shell for Slack",
 	"description": "A shell in Slack.",
-	"respository": "https://github.com/dblock/slack-shellbot",
+	"respository": "https://github.com/slack-ruby/slack-shellbot",
 	"keywords": ["slack", "command-line", "shell", "bash"],
 	"addons": [
 		"mongolab"

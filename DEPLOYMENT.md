@@ -4,7 +4,7 @@
 
 ## Deploy Your Own Slack-Shellbot
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/dblock/slack-shellbot)
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/slack-ruby/slack-shellbot)
 
 ### MongoDB
 
