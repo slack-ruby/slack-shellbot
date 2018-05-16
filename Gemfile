@@ -23,12 +23,14 @@ group :development do
 end
 
 group :test do
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'fabrication'
   gem 'faker'
   gem 'hyperclient'
   gem 'rack-test'
   gem 'rspec'
+  gem 'selenium-webdriver'
   gem 'vcr'
   gem 'webmock'
 end

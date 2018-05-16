@@ -1,14 +1,5 @@
 module Api
   class Middleware
-    def initialize
-      @rack_static = Rack::Static.new(
-        -> { [404, {}, []] },
-        urls: ['/', '/img', '/scripts'],
-        root: File.expand_path('../../../public', __FILE__),
-        index: 'index.html'
-      )
-    end
-
     def self.logger
       @logger ||= begin
         $stdout.sync = true
@@ -17,11 +8,11 @@ module Api
     end
 
     def self.instance
-      @instance ||= Rack::Builder.new do
+      @instance ||= Rack::Builder.new {
         use Rack::Cors do
           allow do
             origins '*'
-            resource '*', headers: :any, methods: [:get, :post]
+            resource '*', headers: :any, methods: %i[get post]
           end
         end
 
@@ -30,16 +21,16 @@ module Api
           r302 %r{(\/[\w\/]*\/)(%7B|\{)?(.*)(%7D|\})}, '$1'
         end
 
-        use Rack::Robotz, 'User-Agent' => '*', 'Disallow' => '/'
+        use Rack::Robotz, 'User-Agent' => '*', 'Disallow' => '/api'
+
+        use Rack::ServerPages
 
         run Api::Middleware.new
-      end.to_app
+      }.to_app
     end
 
     def call(env)
-      response = Api::Endpoints::RootEndpoint.call(env)
-      response = @rack_static.call(env) if response[1]['X-Cascade'] == 'pass'
-      response
+      Api::Endpoints::RootEndpoint.call(env)
     end
   end
 end

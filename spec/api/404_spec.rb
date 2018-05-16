@@ -7,7 +7,7 @@ describe Api do
     it 'returns a plain 404' do
       get '/foobar'
       expect(last_response.status).to eq 404
-      expect(last_response.body).to eq "File not found: /foobar\n"
+      expect(last_response.body).to eq '404 Not Found'
     end
   end
 end
