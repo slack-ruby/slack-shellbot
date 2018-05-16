@@ -12,7 +12,7 @@ describe SlackShellbot::Commands::Rm do
       it 'returns removed file name' do
         expect do
           expect(client).to receive(:say).with(channel: 'channel', text: '/test.txt')
-          message_hook.call(client, text: "#{SlackRubyBot.config.user} rm test.txt", channel: 'channel')
+          message_hook.call(client, Hashie::Mash.new(team: team, text: "#{SlackRubyBot.config.user} rm test.txt", channel: 'channel'))
         end.to change(FileEntry, :count).by(-1)
       end
     end
@@ -21,7 +21,7 @@ describe SlackShellbot::Commands::Rm do
       it 'returns removed file name' do
         expect do
           expect(client).to receive(:say).with(channel: 'channel', text: '/> test.txt')
-          message_hook.call(client, text: "#{SlackRubyBot.config.user} rm \"> test.txt\"", channel: 'channel')
+          message_hook.call(client, Hashie::Mash.new(team: team, text: "#{SlackRubyBot.config.user} rm \"> test.txt\"", channel: 'channel'))
         end.to change(FileEntry, :count).by(-1)
       end
     end

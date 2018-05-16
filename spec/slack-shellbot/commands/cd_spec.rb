@@ -8,13 +8,13 @@ describe SlackShellbot::Commands::Pwd do
   context 'cd' do
     it 'changes directory' do
       expect(client).to receive(:say).with(channel: 'channel', text: '/test')
-      message_hook.call(client, text: "#{SlackRubyBot.config.user} mkdir test", channel: 'channel')
+      message_hook.call(client, Hashie::Mash.new(team: team, text: "#{SlackRubyBot.config.user} mkdir test", channel: 'channel'))
 
       expect(client).to receive(:say).with(channel: 'channel', text: '/test')
-      message_hook.call(client, text: "#{SlackRubyBot.config.user} cd test", channel: 'channel')
+      message_hook.call(client, Hashie::Mash.new(team: team, text: "#{SlackRubyBot.config.user} cd test", channel: 'channel'))
 
       expect(client).to receive(:say).with(channel: 'channel', text: '/test')
-      message_hook.call(client, text: "#{SlackRubyBot.config.user} pwd", channel: 'channel')
+      message_hook.call(client, Hashie::Mash.new(team: team, text: "#{SlackRubyBot.config.user} pwd", channel: 'channel'))
     end
   end
 end

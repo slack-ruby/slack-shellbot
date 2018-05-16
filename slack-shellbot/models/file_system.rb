@@ -7,10 +7,10 @@ class FileSystem
   belongs_to :team
   has_many :entries, dependent: :destroy
 
-  belongs_to :root_directory_entry, inverse_of: nil
-  belongs_to :current_directory_entry, class_name: 'DirectoryEntry', inverse_of: nil
+  belongs_to :root_directory_entry, inverse_of: nil, optional: true
+  belongs_to :current_directory_entry, class_name: 'DirectoryEntry', inverse_of: nil, optional: true
 
-  before_create :ensure_root_directory_entry!
+  after_create :ensure_root_directory_entry!
   has_one :program
 
   def cd(name)
@@ -40,7 +40,8 @@ class FileSystem
   private
 
   def ensure_root_directory_entry!
-    self.root_directory_entry = RootDirectoryEntry.create!(file_system: self)
-    self.current_directory_entry = root_directory_entry
+    self.root_directory_entry ||= RootDirectoryEntry.create!(file_system: self)
+    self.current_directory_entry ||= root_directory_entry
+    self.save!
   end
 end

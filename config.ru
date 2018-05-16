@@ -8,14 +8,6 @@ Bundler.require :default, ENV['RACK_ENV']
 require 'slack-ruby-bot-server'
 require 'slack-shellbot'
 
-if ENV['RACK_ENV'] == 'development'
-  puts 'Loading NewRelic in developer mode ...'
-  require 'new_relic/rack/developer_mode'
-  use NewRelic::Rack::DeveloperMode
-end
-
-NewRelic::Agent.manual_start
-
 SlackShellbot::App.instance.prepare!
 
 Thread.abort_on_exception = true

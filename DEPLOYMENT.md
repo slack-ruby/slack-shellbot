@@ -23,7 +23,3 @@ heroku config:add SLACK_API_TOKEN=...
 #### SLACK_CLIENT_ID and SLACK_CLIENT_SECRET
 
 If your bot services mutliple teams, create a new bot app and set `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`.
-
-#### Database Backups
-
-MongoLab and MongoHQ ensure a system-level backup. You might find it handy to backup the data elsewhere occasionally. If you can run `rake db:heroku:backup[app]` locally as long as you can execute `heroku config --app=...` as well. This creates a `.tar.gz` file from a MongoDB database configured on the Heroku `app` application.

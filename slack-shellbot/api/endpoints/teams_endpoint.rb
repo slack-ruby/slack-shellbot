@@ -59,7 +59,7 @@ module Api
             )
           end
 
-          SlackShellbot::Service.start!(team)
+          SlackShellbot::Service.instance.start!(team)
           present team, with: Api::Presenters::TeamPresenter
         end
       end
