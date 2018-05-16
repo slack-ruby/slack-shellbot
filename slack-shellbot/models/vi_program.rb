@@ -2,7 +2,7 @@ class ViProgram < Program
   field :filename, type: String
   field :data, type: String
 
-  belongs_to :file_entry
+  belongs_to :file_entry, optional: true
 
   validates_presence_of :filename
 

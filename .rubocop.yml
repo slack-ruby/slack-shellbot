@@ -3,4 +3,7 @@ AllCops:
     - vendor/**/*
     - bin/**/*
 
+Style:
+  Enabled: false
+
 inherit_from: .rubocop_todo.yml

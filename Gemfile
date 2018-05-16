@@ -3,9 +3,8 @@ source 'http://rubygems.org'
 ruby '2.3.1'
 
 gem 'giphy'
-gem 'jsonpath'
 gem 'kaminari-grape'
-gem 'mongoid', '~> 5.1.0'
+gem 'mongoid'
 gem 'mongoid-scroll'
 gem 'newrelic-slack-ruby-bot'
 gem 'newrelic_rpm'
@@ -20,7 +19,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'heroku'
   gem 'mongoid-shell'
 end
 

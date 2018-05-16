@@ -8,7 +8,7 @@ describe SlackShellbot::Commands::Touch do
   context 'touch' do
     it 'returns new file name' do
       expect(client).to receive(:say).with(channel: 'channel', text: '/test.txt')
-      message_hook.call(client, text: "#{SlackRubyBot.config.user} touch test.txt", channel: 'channel')
+      message_hook.call(client, Hashie::Mash.new(team: team, text: "#{SlackRubyBot.config.user} touch test.txt", channel: 'channel'))
     end
   end
 end

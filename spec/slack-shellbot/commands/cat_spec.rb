@@ -10,7 +10,7 @@ describe SlackShellbot::Commands::Cat do
     let!(:file) { Fabricate(:file_entry, data: 'hello world', parent_directory_entry: fs.root_directory_entry) }
     it 'pipe into a file' do
       expect(client).to receive(:say).with(channel: 'channel', text: 'hello world')
-      message_hook.call(client, text: "#{SlackRubyBot.config.user} cat #{file.name}", channel: 'channel')
+      message_hook.call(client, Hashie::Mash.new(text: "#{SlackRubyBot.config.user} cat #{file.name}", channel: 'channel', team: team))
     end
   end
 end

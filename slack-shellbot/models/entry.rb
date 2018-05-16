@@ -12,7 +12,7 @@ class Entry
   validates_presence_of :name
   validate :validate_name
 
-  belongs_to :parent_directory_entry, class_name: 'DirectoryEntry', inverse_of: :directories, index: true
+  belongs_to :parent_directory_entry, class_name: 'DirectoryEntry', inverse_of: :directories, index: true, optional: true
   index({ name: 1, parent_directory_entry_id: 1, file_system_id: 1 }, unique: true)
 
   def self.combine_path(path, name)

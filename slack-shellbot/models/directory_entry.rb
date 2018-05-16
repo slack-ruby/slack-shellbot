@@ -2,7 +2,7 @@ class DirectoryEntry < Entry
   include Enumerable
 
   validate :validate_parent_directory_entry
-  has_many :entries, dependent: :destroy
+  has_many :entries # , dependent: :destroy
 
   def mkdir(name)
     DirectoryEntry.create!(
