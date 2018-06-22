@@ -14,6 +14,7 @@ Thread.abort_on_exception = true
 
 Thread.new do
   SlackShellbot::Service.instance.start_from_database!
+  SlackShellbot::App.instance.after_start!
 end
 
 run Api::Middleware.instance
