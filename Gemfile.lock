@@ -62,7 +62,7 @@ GEM
     fabrication (2.20.1)
     faker (1.8.7)
       i18n (>= 0.7)
-    faraday (0.15.1)
+    faraday (0.15.2)
       multipart-post (>= 1.2, < 3)
     faraday-digestauth (0.3.0)
       faraday (~> 0.7)
@@ -83,7 +83,7 @@ GEM
       faraday_middleware (~> 0.9)
       faraday_middleware-parse_oj (~> 0.3)
       launchy (~> 2.4)
-    gli (2.17.1)
+    gli (2.17.2)
     grape (1.0.3)
       activesupport
       builder
@@ -98,7 +98,7 @@ GEM
     grape-swagger (0.28.0)
       grape (>= 0.16.2)
     hashdiff (0.3.7)
-    hashie (3.5.7)
+    hashie (3.6.0)
     hitimes (1.2.6)
     hyperclient (0.9.0)
       faraday (>= 0.9.0)
@@ -107,7 +107,7 @@ GEM
       faraday_middleware
       net-http-digest_auth
       uri_template
-    i18n (1.0.1)
+    i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     kaminari-core (1.1.1)
@@ -216,7 +216,7 @@ GEM
       rack-server-pages
       slack-ruby-bot
       unicorn
-    slack-ruby-client (0.11.1)
+    slack-ruby-client (0.12.0)
       activesupport
       faraday (>= 0.9)
       faraday_middleware
@@ -283,4 +283,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.16.1
+   1.16.3
