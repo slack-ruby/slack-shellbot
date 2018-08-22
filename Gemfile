@@ -10,7 +10,7 @@ gem 'newrelic-slack-ruby-bot'
 gem 'newrelic_rpm'
 gem 'rack-robotz'
 gem 'rack-server-pages'
-gem 'slack-ruby-bot-server'
+gem 'slack-ruby-bot-server', github: 'slack-ruby/slack-ruby-bot-server'
 
 group :development, :test do
   gem 'foreman'

@@ -1,3 +1,20 @@
+GIT
+  remote: git://github.com/slack-ruby/slack-ruby-bot-server.git
+  revision: 865a24baaa20beff6fb03b43edccd1f0aaab88e0
+  specs:
+    slack-ruby-bot-server (0.7.0)
+      celluloid-io
+      foreman
+      grape
+      grape-roar (>= 0.4.0)
+      grape-swagger
+      kaminari-grape
+      rack-cors
+      rack-rewrite
+      rack-server-pages
+      slack-ruby-bot
+      unicorn
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -95,11 +112,11 @@ GEM
       grape
       multi_json
       roar (~> 1.1.0)
-    grape-swagger (0.28.0)
+    grape-swagger (0.30.1)
       grape (>= 0.16.2)
     hashdiff (0.3.7)
     hashie (3.6.0)
-    hitimes (1.2.6)
+    hitimes (1.3.0)
     hyperclient (0.9.0)
       faraday (>= 0.9.0)
       faraday-digestauth
@@ -204,18 +221,6 @@ GEM
     slack-ruby-bot (0.11.1)
       hashie
       slack-ruby-client (>= 0.6.0)
-    slack-ruby-bot-server (0.6.1)
-      celluloid-io
-      foreman
-      grape
-      grape-roar (>= 0.4.0)
-      grape-swagger
-      kaminari-grape
-      rack-cors
-      rack-rewrite
-      rack-server-pages
-      slack-ruby-bot
-      unicorn
     slack-ruby-client (0.12.0)
       activesupport
       faraday (>= 0.9)
@@ -231,7 +236,7 @@ GEM
       thread_safe (~> 0.1)
     uber (0.1.0)
     unicode-display_width (1.3.2)
-    unicorn (5.4.0)
+    unicorn (5.4.1)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     uri_template (0.7.0)
@@ -275,7 +280,7 @@ DEPENDENCIES
   rspec
   rubocop
   selenium-webdriver
-  slack-ruby-bot-server
+  slack-ruby-bot-server!
   vcr
   webmock
 
