@@ -30,7 +30,7 @@ module SlackShellbot
          :wq               - quit and save current file
          :q                - quit without saving
 
-EOS
+      EOS
       def self.call(client, data, _match)
         client.say(channel: data.channel, text: [HELP, SlackShellbot::INFO].join("\n"))
         client._say(channel: data.channel, gif: 'help')
