@@ -10,7 +10,9 @@ gem 'newrelic-slack-ruby-bot'
 gem 'newrelic_rpm'
 gem 'rack-robotz'
 gem 'rack-server-pages'
-gem 'slack-ruby-bot-server'
+gem 'slack-ruby-bot', github: 'dblock/slack-ruby-bot', branch: 'async'
+gem 'slack-ruby-bot-server', github: 'dblock/slack-ruby-bot-server', branch: 'async'
+gem 'slack-ruby-client', github: 'dblock/slack-ruby-client', branch: 'async'
 
 group :development, :test do
   gem 'foreman'
