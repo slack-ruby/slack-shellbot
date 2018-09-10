@@ -21,6 +21,7 @@ class DirectoryEntry < Entry
   def rmdir(name)
     dir = entries.where(_type: 'DirectoryEntry', name: name).first
     raise Errno::ENOENT, name unless dir
+
     dir.destroy
     dir
   end
@@ -28,6 +29,7 @@ class DirectoryEntry < Entry
   def find(name)
     file = entries.where(_type: 'FileEntry', name: name).first
     raise Errno::ENOENT, name unless file
+
     file
   end
 
@@ -57,6 +59,7 @@ class DirectoryEntry < Entry
 
   def each
     return enum_for(:each) unless block_given?
+
     yield CurrentDirectoryEntry.new(self)
     yield ParentDirectoryEntry.new(self)
     entries.asc(:name).each do |dir|

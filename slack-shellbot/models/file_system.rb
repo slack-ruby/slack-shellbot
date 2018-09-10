@@ -22,6 +22,7 @@ class FileSystem
           else
             dir = current_directory_entry.entries.where(_type: 'DirectoryEntry', name: name).first
             raise Errno::ENOENT, Entry.combine_path(current_directory_entry.path, name) unless dir
+
             dir
           end
     update_attributes!(current_directory_entry: dir)

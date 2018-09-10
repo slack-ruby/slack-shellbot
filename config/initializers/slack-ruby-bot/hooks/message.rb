@@ -4,9 +4,11 @@ module SlackRubyBot
       alias _call call
       def call(client, data)
         return if message_to_self?(client, data)
+
         Thread.current[:stdout] = []
         data = Hashie::Mash.new(data)
         return if data.subtype
+
         if data.key?(:text)
           data.text = Slack::Messages::Formatting.unescape(data.text)
           command, redirect_to = split_redirect(data.text)
@@ -37,6 +39,7 @@ module SlackRubyBot
         while parts.any?
           part = parts.shift
           break if part == '>'
+
           command << part
         end
         [command.shelljoin, parts.shelljoin]
