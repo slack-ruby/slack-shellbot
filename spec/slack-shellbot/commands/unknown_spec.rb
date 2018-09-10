@@ -13,4 +13,8 @@ describe SlackRubyBot::Commands::Unknown, vcr: { cassette_name: 'user_info' } do
     expect(SlackRubyBot::Commands::Base).to_not receive(:send_message)
     message_hook.call(client, Hashie::Mash.new(text: ':(('))
   end
+  it 'ignores unmatched quotes' do
+    expect(SlackRubyBot::Commands::Base).to_not receive(:send_message)
+    message_hook.call(client, Hashie::Mash.new(team: team, text: "\"unmatched quote", channel: 'channel', user: 'user'))
+  end
 end

@@ -40,6 +40,8 @@ module SlackRubyBot
           command << part
         end
         [command.shelljoin, parts.shelljoin]
+      rescue ArgumentError
+        nil
       end
     end
   end
