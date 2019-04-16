@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '2.6.2'
 
 gem 'giphy'
+gem 'irb'
 gem 'kaminari-grape'
 gem 'mongoid'
 gem 'mongoid-scroll'
@@ -11,6 +12,7 @@ gem 'newrelic_rpm'
 gem 'rack-robotz'
 gem 'rack-server-pages'
 gem 'slack-ruby-bot-server'
+gem 'slack-ruby-bot-server-mailchimp'
 gem 'unicorn'
 
 group :development, :test do
