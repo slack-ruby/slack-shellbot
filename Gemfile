@@ -11,7 +11,7 @@ gem 'newrelic-slack-ruby-bot'
 gem 'newrelic_rpm'
 gem 'rack-robotz'
 gem 'rack-server-pages'
-gem 'slack-ruby-bot-server'
+gem 'slack-ruby-bot-server', github: 'dblock/slack-ruby-bot-server', branch: 'ping-worker'
 gem 'slack-ruby-bot-server-mailchimp'
 gem 'unicorn'
 

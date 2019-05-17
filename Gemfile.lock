@@ -1,3 +1,20 @@
+GIT
+  remote: git://github.com/dblock/slack-ruby-bot-server.git
+  revision: 59bcf642ae9123879740feff14b2db453bf391e5
+  branch: ping-worker
+  specs:
+    slack-ruby-bot-server (0.11.1)
+      async-websocket (~> 0.8.0)
+      foreman
+      grape
+      grape-roar (>= 0.4.0)
+      grape-swagger
+      kaminari-grape
+      rack-cors
+      rack-rewrite
+      rack-server-pages
+      slack-ruby-bot (>= 0.12.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -15,7 +32,7 @@ GEM
       console (~> 1.0)
       nio4r (~> 2.3)
       timers (~> 4.1)
-    async-io (1.20.0)
+    async-io (1.23.1)
       async (~> 1.14)
     async-websocket (0.8.0)
       async-io
@@ -39,7 +56,7 @@ GEM
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.1.5)
-    console (1.2.1)
+    console (1.2.4)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     database_cleaner (1.7.0)
@@ -137,7 +154,7 @@ GEM
       mongoid (>= 3.0.0)
       mongoid-compatibility
     multi_json (1.13.1)
-    multipart-post (2.0.0)
+    multipart-post (2.1.1)
     mustermann (1.0.3)
     mustermann-grape (1.0.0)
       mustermann (~> 1.0.0)
@@ -211,17 +228,6 @@ GEM
     slack-ruby-bot (0.12.0)
       hashie
       slack-ruby-client (>= 0.14.0)
-    slack-ruby-bot-server (0.11.0)
-      async-websocket
-      foreman
-      grape
-      grape-roar (>= 0.4.0)
-      grape-swagger
-      kaminari-grape
-      rack-cors
-      rack-rewrite
-      rack-server-pages
-      slack-ruby-bot (>= 0.12.0)
     slack-ruby-bot-server-mailchimp (0.2.0)
       mailchimp_api_v3
       slack-ruby-bot-server (>= 0.10.0)
@@ -287,7 +293,7 @@ DEPENDENCIES
   rspec
   rubocop
   selenium-webdriver
-  slack-ruby-bot-server
+  slack-ruby-bot-server!
   slack-ruby-bot-server-mailchimp
   unicorn
   vcr
