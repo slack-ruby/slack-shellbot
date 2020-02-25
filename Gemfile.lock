@@ -147,7 +147,7 @@ GEM
       slack-ruby-bot (>= 0.10.5)
     newrelic_rpm (6.7.0.359)
     nio4r (2.5.2)
-    nokogiri (1.10.5)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     oj (3.9.2)
     parallel (1.19.0)
