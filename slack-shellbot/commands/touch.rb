@@ -1,9 +1,11 @@
 module SlackShellbot
   module Commands
     class Touch < SlackRubyBot::Commands::Base
+      match(/^touch([\s])?(?<file>.*)$/)
+
       def self.call(client, data, match)
         fs = client.owner.fs[data.channel]
-        file = Shellwords.split(match['expression']).first if match.names.include?('expression')
+        file = Shellwords.split(match['file']).first if match.names.include?('file')
         raise 'usage: touch <file> ...' unless file
 
         file_entry = fs.current_directory_entry.touch(file)

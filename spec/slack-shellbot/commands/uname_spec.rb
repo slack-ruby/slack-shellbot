@@ -8,7 +8,7 @@ describe SlackShellbot::Commands::Uname do
   context 'uname' do
     it 'returns Shell' do
       expect(client).to receive(:say).with(channel: 'channel', text: 'Shell')
-      message_hook.call(client, Hashie::Mash.new(team: team, text: "#{SlackRubyBot.config.user} uname", channel: 'channel'))
+      message_hook.call(client, Hashie::Mash.new(team: team, text: "uname", channel: 'channel'))
     end
   end
 end

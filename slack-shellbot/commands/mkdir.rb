@@ -1,9 +1,11 @@
 module SlackShellbot
   module Commands
     class Mkdir < SlackRubyBot::Commands::Base
+      match(/^mkdir([\s])?(?<path>.*)$/)
+
       def self.call(client, data, match)
         fs = client.owner.fs[data.channel]
-        directory = Shellwords.split(match['expression']).first if match.names.include?('expression')
+        directory = Shellwords.split(match['path']).first if match.names.include?('path')
         raise 'usage: mkdir <directory> ...' unless directory
 
         directory_entry = fs.current_directory_entry.mkdir(directory)

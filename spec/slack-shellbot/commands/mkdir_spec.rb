@@ -8,11 +8,11 @@ describe SlackShellbot::Commands::Mkdir do
   context 'mkdir' do
     it 'returns current directory' do
       expect(client).to receive(:say).with(channel: 'channel', text: '/test')
-      message_hook.call(client, Hashie::Mash.new(team: team, text: "#{SlackRubyBot.config.user} mkdir test", channel: 'channel'))
+      message_hook.call(client, Hashie::Mash.new(team: team, text: "mkdir test", channel: 'channel'))
     end
     it 'makes a directory with a space' do
       expect(client).to receive(:say).with(channel: 'channel', text: '/foo bar')
-      message_hook.call(client, Hashie::Mash.new(team: team, text: "#{SlackRubyBot.config.user} mkdir \"foo bar\"", channel: 'channel'))
+      message_hook.call(client, Hashie::Mash.new(team: team, text: "mkdir \"foo bar\"", channel: 'channel'))
     end
   end
 end

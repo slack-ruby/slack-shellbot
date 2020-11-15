@@ -1,6 +1,8 @@
 module SlackShellbot
   module Commands
     class Help < SlackRubyBot::Commands::Base
+      command 'help'
+
       HELP = <<~EOS.freeze
         I am your friendly Shellbot, here to help.
 

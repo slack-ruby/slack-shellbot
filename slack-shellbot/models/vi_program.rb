@@ -16,7 +16,7 @@ class ViProgram < Program
   def message(client, request)
     ensure_data
     text, = SlackRubyBot::Commands::Base.send(:parse, client, request)
-    match = text.match(/^(?<bot>\S*)[\s]*(?<expression>.*)$/)
+    match = text.match(/(?<expression>.*)$/)
     expression = match['expression'] if match.names.include?('expression')
     if expression
       case expression

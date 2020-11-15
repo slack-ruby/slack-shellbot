@@ -1,6 +1,8 @@
 module SlackShellbot
   module Commands
     class Pwd < SlackRubyBot::Commands::Base
+      match(/^pwd$/)
+
       def self.call(client, data, _match)
         fs = client.owner.fs[data.channel]
         client.say(channel: data.channel, text: fs.current_directory_entry.path)

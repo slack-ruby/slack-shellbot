@@ -1,6 +1,8 @@
 module SlackShellbot
   module Commands
     class Ls < SlackRubyBot::Commands::Base
+      match(/^ls$/)
+
       def self.call(client, data, _match)
         fs = client.owner.fs[data.channel]
         dirs = fs.current_directory_entry.map(&:to_s).join("\n")

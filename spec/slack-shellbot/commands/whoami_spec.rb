@@ -8,7 +8,7 @@ describe SlackShellbot::Commands::Whoami do
   context 'whoami' do
     it 'returns username' do
       expect(client).to receive(:say).with(channel: 'channel', text: '<@user>')
-      message_hook.call(client, Hashie::Mash.new(team: team, text: "#{SlackRubyBot.config.user} whoami", channel: 'channel', user: 'user'))
+      message_hook.call(client, Hashie::Mash.new(team: team, text: "whoami", channel: 'channel', user: 'user'))
     end
   end
 end

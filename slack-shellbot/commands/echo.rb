@@ -1,11 +1,14 @@
 module SlackShellbot
   module Commands
     class Echo < SlackRubyBot::Commands::Base
+      match(/^echo$/)
+      match(/^echo([\s])?(?<text>.*)$/)
+
       def self.call(client, data, match)
         fs = client.owner.fs[data.channel]
-        expression = match['expression'] if match.names.include?('expression')
-        client.say(channel: data.channel, text: expression || "\n")
-        logger.info "ECHO: #{client.owner}, #{fs}, expression=#{expression}, user=#{data.user}"
+        text = match['text'] if match.names.include?('text')
+        client.say(channel: data.channel, text: text || "\n")
+        logger.info "ECHO: #{client.owner}, #{fs}, text=#{text}, user=#{data.user}"
       end
     end
   end

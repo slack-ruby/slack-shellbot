@@ -6,7 +6,6 @@ module SlackRubyBot
         return if client.message_to_self?(data)
 
         Thread.current[:stdout] = []
-        data = Hashie::Mash.new(data)
         return if data.subtype
 
         if data.key?(:text)
@@ -14,6 +13,7 @@ module SlackRubyBot
           command, redirect_to = split_redirect(data.text)
           data.text = command if command
         end
+
         fs = client.owner.fs[data.channel] if data.channel
         if fs && fs.program
           client.logger.info "PROGRAM: #{client.owner}, #{fs}, program=#{fs.program._type}, user=#{data.user}, message_ts=#{fs.program.message_ts}"

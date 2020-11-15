@@ -8,7 +8,7 @@ describe SlackShellbot::Commands::Pwd do
   context 'ls' do
     it 'returns contents of the current directory' do
       expect(client).to receive(:say).with(channel: 'channel', text: ".\n..")
-      message_hook.call(client, Hashie::Mash.new(team: team, text: "#{SlackRubyBot.config.user} ls", channel: 'channel'))
+      message_hook.call(client, Hashie::Mash.new(team: team, text: "ls", channel: 'channel'))
     end
   end
 end
