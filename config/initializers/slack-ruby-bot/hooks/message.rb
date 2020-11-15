@@ -3,7 +3,7 @@ module SlackRubyBot
     class Message
       alias _call call
       def call(client, data)
-        return if message_to_self?(client, data)
+        return if client.message_to_self?(data)
 
         Thread.current[:stdout] = []
         data = Hashie::Mash.new(data)
