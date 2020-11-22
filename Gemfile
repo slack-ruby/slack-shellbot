@@ -13,7 +13,7 @@ gem 'rack-robotz'
 gem 'rack-server-pages'
 gem 'slack-ruby-bot-server'
 gem 'slack-ruby-bot-server-mailchimp'
-gem 'slack-ruby-bot-server-rtm'
+gem 'slack-ruby-bot-server-events'
 gem 'unicorn'
 
 group :development, :test do
