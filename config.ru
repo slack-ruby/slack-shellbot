@@ -1,19 +1,10 @@
-$LOAD_PATH.unshift(File.dirname(__FILE__))
+# frozen_string_literal: true
 
-ENV['RACK_ENV'] ||= 'development'
+require_relative 'app'
 
-require 'bundler/setup'
-Bundler.require :default, ENV['RACK_ENV']
+NewRelic::Agent.manual_start
 
-require 'slack-ruby-bot-server'
-require 'slack-shellbot'
+SlackRubyBotServer::App.instance.prepare!
+SlackRubyBotServer::Service.start!
 
-SlackShellbot::App.instance.prepare!
-
-Thread.abort_on_exception = true
-
-Thread.new do
-  SlackRubyBotServer::Service.instance.start_from_database!
-end
-
-run Api::Middleware.instance
+run SlackRubyBotServer::Api::Middleware.instance

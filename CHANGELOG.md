@@ -1,5 +1,6 @@
 ### Changelog
 
+* 2020/11/22. [#22](https://github.com/slack-ruby/slack-shellbot/pull/22): Migrate app to granular scopes and events API - [@dblock](https://github.com/dblock).
 * 2018/9/10, [#6](https://github.com/slack-ruby/slack-shellbot/issues/6): Fix `Unmatched double quote` errors - [@dblock](https://github.com/dblock).
 * 2016/3/2, [#5](https://github.com/slack-ruby/slack-shellbot/issues/5): `:q` will quit `vi` without saving the file - [@dblock](https://github.com/dblock).
 * 2016/3/2, [#4](https://github.com/slack-ruby/slack-shellbot/issues/4): Edit messages in-place with `vi` - [@dblock](https://github.com/dblock).
