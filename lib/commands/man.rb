@@ -1,15 +1,15 @@
 module SlackShellbot
   module Commands
-    class Help < Base
-      command 'help'
+    class Man < Base
+      match(/^man$/)
 
       HELP = <<~EOS.freeze
-        I am your friendly Shellbot, here to help.
+        Whoa! A bash shell in a Slack channel.
 
         General
         -------
 
-        help               - get this helpful message
+        man                - get this helpful message
         uname              - print the operating system name
         whoami             - print your username
 
@@ -33,9 +33,11 @@ module SlackShellbot
          :q                - quit without saving
 
       EOS
+
       def self.call(client, data, _match)
-        client.say(channel: data.channel, text: [HELP, SlackShellbot::INFO].join("\n"))
-        logger.info "HELP: #{client.owner}, user=#{data.user}"
+        fs = client.owner.fs[data.channel]
+        client.say(channel: data.channel, text: HELP)
+        logger.info "MAN: #{client.owner}, #{fs}, user=#{data.user}"
       end
     end
   end

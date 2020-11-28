@@ -1,5 +1,5 @@
 require_relative 'commands/base'
-require_relative 'commands/help'
+require_relative 'commands/man'
 require_relative 'commands/pwd'
 require_relative 'commands/ls'
 require_relative 'commands/mkdir'
