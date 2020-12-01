@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>Shell: Help</title>
+    <%= partial 'public/partials/_head.html.erb' %>
+  </head>
+  <body>
+    <p class='icon'>
+      <a href='/'><img src='img/icon.png'></a>
+    </p>
+    <div class='help'>
+      <pre>
+        <%= CGI.escapeHTML(SlackShellbot::Commands::Man::HELP) %>
+      </pre>
+    </div>
+    <%= partial 'public/partials/_footer.html.erb' %>
+  </body>
+</html>
+

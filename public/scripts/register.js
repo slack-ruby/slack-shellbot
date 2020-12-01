@@ -1,39 +1,8 @@
-var SlackShellbot = {};
-
 $(document).ready(function() {
-
-  SlackShellbot.message = function(text) {
-    $('#messages').fadeOut('slow', function() {
-      $('#messages').fadeIn('slow').html(text)
-    });
-  };
-
-  SlackShellbot.error = function(xhr) {
-    try {
-      var message;
-      if (xhr.responseText) {
-        var rc = JSON.parse(xhr.responseText);
-        if (rc && rc.message) {
-          message = rc.message;
-          if (message == 'invalid_code') {
-            message = 'The code returned from the OAuth workflow was invalid.'
-          } else if (message == 'code_already_used') {
-            message = 'The code returned from the OAuth workflow has already been used.'
-          }
-        }
-      }
-
-      SlackShellbot.message(message || xhr.statusText || xhr.responseText || 'Unexpected Error');
-
-    } catch(err) {
-      SlackShellbot.message(err.message);
-    }
-  };
-
   // Slack OAuth
   var code = $.url('?code')
   if (code) {
-    SlackShellbot.message('Working, please wait ...');
+    SlackShell.message('Working, please wait ...');
     $('#register').hide();
     $.ajax({
       type: "POST",
@@ -42,9 +11,9 @@ $(document).ready(function() {
         code: code
       },
       success: function(data) {
-        SlackShellbot.message('Team successfully registered!<br><br>DM <b>@sh</b> or create a <b>#shell</b> channel and invite <b>@sh</b> to it.');
+        SlackShell.message('Team successfully registered!<br><br>Invite <b>@sh</b> to a channel.');
       },
-      error: SlackShellbot.error
+      error: SlackShell.error
     });
   }
 });

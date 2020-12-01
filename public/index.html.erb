@@ -1,36 +1,35 @@
 <html>
  <head>
-  <title>Slack Shellbot</title>
-  <script src="/scripts/jquery-1.7.1.min.js"></script>
-  <script src="/scripts/url.min.js"></script>
+  <title>Shell: A Unix Shell in Every Slack Channel</title>
+  <%= partial 'public/partials/_head.html.erb' %>
   <script src="/scripts/register.js"></script>
-  <script src="/scripts/stats.js"></script>
-</head>
- <body style="text-align: center">
-  <p>
-    <img src='img/icon.png' width="120px" height="120px">
+  <script src="/scripts/status.js"></script>
+  <meta name="slack-app-id" content="A01F73M28BF">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <meta name="description" content="Add a rudimentary Unix shell to every Slack channel."/>
+ </head>
+ <body>
+  <p class='icon'>
+    <a href="/"><img src='img/icon.png'></a>
   </p>
   <p>
-    <h3>Whoa, a bash shell inside Slack!</h3>
-    <small>Creates a rudimentary file system in every channel.<br>Invite the bot into a channel, try <span style="font-family: Courier">man</span>, <span style="font-family: Courier">ls</span>, and other unix commands.</small>
+    <h1>Whoa, a bash shell inside Slack!</h1>
   </p>
+  <p>
+    Creates a rudimentary file system in every channel.<br>Invite the bot into a channel, try <span style="font-family: Courier">man</span>, <span style="font-family: Courier">ls</span>, and other unix commands.
+  </p>
+  <p>&nbsp;</p>
   <p id='messages' />
   <p id='register'>
     <a href="<%= SlackRubyBotServer::Config.oauth_authorize_url %>?scope=<%= SlackRubyBotServer::Config.oauth_scope_s %>&client_id=<%= ENV['SLACK_CLIENT_ID'] %>"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"></a>
   </p>
   <p id='active_teams_count'>&nbsp;</p>
-  <p>
-    <img src="img/vi.gif">
+  <p>&nbsp;</p>
+  <p class='image'>
+    <img src='img/shell.gif'>
   </p>
-  <p>
-    <a href="https://twitter.com/share" class="twitter-share-button"{count} data-text="Whoa, a bash shell inside Slack!" data-via="dblockdotorg">Tweet</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-  </p>
-  <p>
-    <small>
-      made by <a href="https://twitter.com/dblockdotorg" target="_blank">@dblockdotorg</a>, <a href="https://github.com/slack-ruby/slack-shellbot" target="_blank">fork me on github</a>
-    </small>
-  </p>
+  <%= partial 'public/partials/_footer.html.erb' %>
  </body>
 </html>
 
