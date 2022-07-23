@@ -254,7 +254,7 @@ GEM
       websocket-driver
     thread_safe (0.3.6)
     timers (4.3.2)
-    tzinfo (1.2.8)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     uber (0.1.0)
     unf (0.1.4)
