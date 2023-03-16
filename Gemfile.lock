@@ -1,9 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (6.1.7.2)
-      activesupport (= 6.1.7.2)
-    activesupport (6.1.7.2)
+    activemodel (6.1.7.3)
+      activesupport (= 6.1.7.3)
+    activesupport (6.1.7.3)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -27,7 +27,7 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
-    concurrent-ruby (1.2.0)
+    concurrent-ruby (1.2.2)
     console (1.10.1)
       fiber-local
     crack (0.4.4)
@@ -127,7 +127,7 @@ GEM
     mime-types-data (3.2020.1104)
     mini_mime (1.0.2)
     mini_portile2 (2.8.1)
-    minitest (5.17.0)
+    minitest (5.18.0)
     mongo (2.13.1)
       bson (>= 4.8.2, < 5.0.0)
     mongoid (7.3.1)
@@ -229,7 +229,7 @@ GEM
     slack-ruby-bot (0.16.0)
       hashie
       slack-ruby-client (>= 0.14.0)
-    slack-ruby-bot-server (1.2.1)
+    slack-ruby-bot-server (2.1.0)
       async
       foreman
       grape
@@ -273,7 +273,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.6)
+    zeitwerk (2.6.7)
 
 PLATFORMS
   ruby
