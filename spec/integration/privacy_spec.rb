@@ -2,10 +2,11 @@
 
 require 'spec_helper'
 
-describe 'privacy.html', js: true, type: :feature do
+describe 'privacy.html', :js, type: :feature do
   before do
     visit '/privacy.html'
   end
+
   it 'renders privacy policy' do
     expect(title).to eq('Shell: Privacy Policy')
   end

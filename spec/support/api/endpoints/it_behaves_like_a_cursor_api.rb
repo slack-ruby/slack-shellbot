@@ -28,7 +28,9 @@ shared_examples_for 'a cursor api' do |model|
       next_cursor = { size: 3 }
       loop do
         response = client.send(model_ps, next_cursor.merge(cursor_params))
-        models_ids.concat(response.map { |instance| instance._links.self._url.gsub("http://example.org/api/#{model_ps}/", '') })
+        models_ids.concat(response.map { |instance|
+          instance._links.self._url.gsub("http://example.org/api/#{model_ps}/", '')
+        })
         break unless response._links[:next]
 
         next_cursor = Hash[CGI.parse(URI.parse(response._links.next._url).query).map { |a| [a[0], a[1][0]] }]
@@ -41,7 +43,9 @@ shared_examples_for 'a cursor api' do |model|
       next_cursor = { size: 3, offset: 3 }
       loop do
         response = client.send(model_ps, next_cursor.merge(cursor_params))
-        models_ids.concat(response.map { |instance| instance._links.self._url.gsub("http://example.org/api/#{model_ps}/", '') })
+        models_ids.concat(response.map { |instance|
+          instance._links.self._url.gsub("http://example.org/api/#{model_ps}/", '')
+        })
         break unless response._links[:next]
 
         next_cursor = Hash[CGI.parse(URI.parse(response._links.next._url).query).map { |a| [a[0], a[1][0]] }]
@@ -52,8 +56,9 @@ shared_examples_for 'a cursor api' do |model|
     context 'total count' do
       it "doesn't return total_count" do
         response = client.send(model_ps, cursor_params)
-        expect(response).to_not respond_to(:total_count)
+        expect(response).not_to respond_to(:total_count)
       end
+
       it 'returns total_count when total_count query string is specified' do
         response = client.send(model_ps, cursor_params.merge(total_count: true))
         expect(response.total_count).to eq model.all.count

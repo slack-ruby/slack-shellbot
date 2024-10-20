@@ -1,5 +1,6 @@
 AllCops:
   NewCops: enable
+  TargetRubyVersion: 3.3
   Exclude:
     - vendor/**/*
     - bin/**/*
@@ -11,3 +12,8 @@ Metrics:
   Enabled: false
 
 inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-capybara
+  - rubocop-rake
+  - rubocop-rspec

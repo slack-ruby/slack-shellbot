@@ -34,7 +34,8 @@ module SlackShellbot
           if result && redirect_to && !redirect_to.empty?
             redirect_to = Shellwords.split(redirect_to).first
             file_entry = fs.current_directory_entry.write(redirect_to, Thread.current[:stdout].join("\n"))
-            client.chat_postMessage(channel: data.channel, text: "```#{file_entry.size} byte(s) written```", as_user: true)
+            client.chat_postMessage(channel: data.channel, text: "```#{file_entry.size} byte(s) written```",
+                                    as_user: true)
             client.logger.info "WRITE: #{client.owner}, #{fs}, file=#{file_entry}, user=#{data.user}"
           end
           result
@@ -58,9 +59,10 @@ module SlackShellbot
           nil
         end
 
-        def command(*values, &block)
+        def command(*values, &)
           values = values.map { |value| value.is_a?(Regexp) ? value.source : Regexp.escape(value) }.join('|')
-          match Regexp.new("^sh[[:space:]](?<command>#{values})([[:space:]]+(?<expression>.*)|)$", Regexp::IGNORECASE | Regexp::MULTILINE), &block
+          match(Regexp.new("^sh[[:space:]](?<command>#{values})([[:space:]]+(?<expression>.*)|)$", Regexp::IGNORECASE | Regexp::MULTILINE),
+                &)
         end
 
         def invoke(client, data)

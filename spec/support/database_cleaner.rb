@@ -1,16 +1,16 @@
-require 'database_cleaner'
+require 'database_cleaner-mongoid'
 
 RSpec.configure do |config|
   config.before :suite do
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.clean_with :truncation
+    DatabaseCleaner.strategy = :deletion
+    DatabaseCleaner.clean_with :deletion
   end
 
   config.after :suite do
     Mongoid.purge!
   end
 
-  config.around :each do |example|
+  config.around do |example|
     DatabaseCleaner.cleaning do
       example.run
     end

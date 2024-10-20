@@ -2,17 +2,19 @@ require 'spec_helper'
 
 describe Entry do
   let(:fs) { Fabricate(:file_system) }
-  context '#name' do
+
+  describe '#name' do
     it '.' do
-      expect(Entry.new(name: '.', file_system: fs)).to_not be_valid
-      expect(Entry.new(name: '..', file_system: fs)).to_not be_valid
-      expect(Entry.new(name: '...', file_system: fs)).to_not be_valid
+      expect(described_class.new(name: '.', file_system: fs)).not_to be_valid
+      expect(described_class.new(name: '..', file_system: fs)).not_to be_valid
+      expect(described_class.new(name: '...', file_system: fs)).not_to be_valid
     end
+
     it 'alphanumeric' do
-      expect(Entry.new(name: 'foo', file_system: fs)).to be_valid
-      expect(Entry.new(name: 'foo bar', file_system: fs)).to be_valid
-      expect(Entry.new(name: '123', file_system: fs)).to be_valid
-      expect(Entry.new(name: 'abc123', file_system: fs)).to be_valid
+      expect(described_class.new(name: 'foo', file_system: fs)).to be_valid
+      expect(described_class.new(name: 'foo bar', file_system: fs)).to be_valid
+      expect(described_class.new(name: '123', file_system: fs)).to be_valid
+      expect(described_class.new(name: 'abc123', file_system: fs)).to be_valid
     end
   end
 end
