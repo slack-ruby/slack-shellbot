@@ -288,7 +288,7 @@ GEM
     unicorn (6.1.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
-    uri (0.13.1)
+    uri (0.13.2)
     vcr (6.3.1)
       base64
     webmock (3.24.0)
