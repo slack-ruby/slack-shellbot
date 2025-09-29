@@ -15,6 +15,6 @@ This bot is built with [slack-ruby-bot-server-events](https://github.com/slack-r
 
 ## Copyright and License
 
-Copyright (c) 2016-2020, Daniel Doubrovkine, Artsy and [Contributors](CHANGELOG.md).
+Copyright (c) 2016-2025, Daniel Doubrovkine, Artsy and [Contributors](CHANGELOG.md).
 
 This project is licensed under the [MIT License](LICENSE.md).

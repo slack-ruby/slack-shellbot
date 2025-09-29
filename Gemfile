@@ -1,13 +1,12 @@
 source 'https://rubygems.org'
 
-ruby '3.3.5'
+ruby '3.4.6'
 
 gem 'irb'
 gem 'kaminari-grape'
 gem 'mongoid'
 gem 'mongoid-scroll'
 gem 'newrelic_rpm'
-gem 'newrelic-slack-ruby-bot'
 gem 'rack-robotz'
 gem 'rack-server-pages'
 gem 'slack-ruby-bot-server-events'
@@ -21,6 +20,7 @@ group :development, :test do
   gem 'rubocop-capybara'
   gem 'rubocop-rake'
   gem 'rubocop-rspec'
+  gem 'webrick'
 end
 
 group :development do
