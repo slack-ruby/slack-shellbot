@@ -7,11 +7,11 @@ gem 'kaminari-grape'
 gem 'mongoid'
 gem 'mongoid-scroll'
 gem 'newrelic_rpm'
+gem 'puma'
 gem 'rack-robotz'
 gem 'rack-server-pages'
 gem 'slack-ruby-bot-server-events'
 gem 'slack-ruby-bot-server-mailchimp'
-gem 'unicorn'
 
 group :development, :test do
   gem 'foreman'
@@ -20,7 +20,6 @@ group :development, :test do
   gem 'rubocop-capybara'
   gem 'rubocop-rake'
   gem 'rubocop-rspec'
-  gem 'webrick'
 end
 
 group :development do
