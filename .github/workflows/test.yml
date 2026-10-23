@@ -9,16 +9,16 @@ jobs:
       - uses: actions/checkout@v6
       - uses: browser-actions/setup-firefox@v1
         with:
-          firefox-version: '143.0.3'
+          firefox-version: '157.0'
       - uses: browser-actions/setup-geckodriver@latest
         with:
-          geckodriver-version: "0.36.0"
+          geckodriver-version: "0.37.1"
       - uses: supercharge/mongodb-github-action@v1
         with:
           mongodb-version: "8.0"
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "4.0.2"
+          ruby-version: "4.0.9"
           bundler-cache: true
       - uses: GabrielBB/xvfb-action@v1
         with:

@@ -1,5 +1,6 @@
 ### Changelog
 
+* 2026/10/23: Upgrade to Ruby 4.0.9 and refresh dependencies and CI browser tooling - [@dblock](https://github.com/dblock), [@Copilot](https://github.com/apps/copilot-swe-agent).
 * 2025/09/29: Upgraded to Ruby 3.4.6 - [@dblock](https://github.com/dblock).
 * 2020/11/22. [#22](https://github.com/slack-ruby/slack-shellbot/pull/22): Migrate app to granular scopes and events API - [@dblock](https://github.com/dblock).
 * 2018/9/10, [#6](https://github.com/slack-ruby/slack-shellbot/issues/6): Fix `Unmatched double quote` errors - [@dblock](https://github.com/dblock).
