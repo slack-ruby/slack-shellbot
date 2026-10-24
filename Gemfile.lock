@@ -282,7 +282,7 @@ GEM
       logger (~> 1.4)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
-    slack-ruby-bot-server (2.2.0)
+    slack-ruby-bot-server (2.2.1)
       async
       foreman
       grape
