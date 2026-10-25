@@ -23,6 +23,13 @@ describe 'index.html', :js, type: :feature do
     expect(page).to have_css('#is-this-a-joke p', text: 'Yes. Also, it works!')
   end
 
+  it 'loads the generated stylesheet and versioned artwork after a reload' do
+    page.refresh
+    background = page.evaluate_script("getComputedStyle(document.body, '::before').backgroundImage")
+    expect(background).to match(%r{/img/screenshot-background\.svg\?v=[a-f0-9]{64}})
+    expect(page).to have_css('.hero-preview img') { |image| image.evaluate_script('this.complete && this.naturalWidth > 0') }
+  end
+
   it 'links to the bot recommendations after How to use in navigation' do
     expect(page).to have_css('.nav-links a[href="/#how-to-use"] + a[href="/#more-bots"]', text: /More bots/i)
     within('nav') { click_link 'More bots' }
