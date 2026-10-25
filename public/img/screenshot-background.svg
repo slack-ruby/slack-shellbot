@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1366" height="768" viewBox="0 0 1366 768" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="back" x2="1" y2="0">
+      <stop stop-color="#f5f5f6"/>
+      <stop offset=".5" stop-color="#e0e0e3"/>
+      <stop offset="1" stop-color="#a6a6af"/>
+    </linearGradient>
+    <linearGradient id="ribbon" x2="1" y2="0">
+      <stop stop-color="#ededf0"/>
+      <stop offset=".3" stop-color="#ceced4"/>
+      <stop offset=".7" stop-color="#94949e"/>
+      <stop offset="1" stop-color="#303035"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#fff" stop-opacity=".8"/>
+      <stop offset=".45" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <path id="back-flow" d="M-100 215 C180 30 330 235 540 340 C820 480 1080 340 1466 65 L1466 245 C1120 510 850 595 585 450 C325 305 150 155 -100 365Z"/>
+    <path id="lower-flow" d="M-100 530 C150 380 350 585 595 640 C880 735 1150 590 1466 420 L1466 660 C1090 840 850 815 570 745 C330 675 125 530 -100 705Z"/>
+    <path id="flow" d="M-80 380 C150 205 310 345 535 495 C805 675 1035 555 1446 210 L1446 450 C1115 525 925 680 655 648 C370 615 205 365 -80 520Z"/>
+  </defs>
+  <rect width="1366" height="768" fill="#fff"/>
+  <path d="M-100 100 C120 20 360 260 620 285 C900 310 1120 150 1466 10 L1466 105 C1060 350 850 445 580 350 C310 255 150 100 -100 215Z" fill="url(#back)" opacity=".4"/>
+  <use href="#back-flow" fill="url(#back)"/>
+  <use href="#back-flow" fill="url(#sheen)"/>
+  <use href="#lower-flow" fill="url(#back)"/>
+  <use href="#lower-flow" fill="url(#sheen)"/>
+  <use href="#flow" fill="url(#ribbon)"/>
+  <use href="#flow" fill="url(#sheen)"/>
+  <g fill="none" stroke="#303035" stroke-opacity=".12">
+    <path d="M-100 202 C180 17 330 222 540 327 C820 467 1080 327 1466 52"/>
+    <path d="M-80 298 C175 175 350 370 563 467 C825 586 1090 426 1446 112"/>
+    <path d="M-80 380 C150 205 310 345 535 495 C805 675 1035 555 1446 210"/>
+    <path d="M-100 545 C150 395 350 600 595 655 C880 750 1150 605 1466 435"/>
+  </g>
+  <g fill="none" stroke="#fff" stroke-opacity=".8">
+    <path d="M-100 268 C180 83 330 288 540 393 C820 533 1080 393 1466 118"/>
+    <path d="M-80 420 C155 267 325 425 565 550 C835 692 1080 495 1446 319" stroke-width="1.5"/>
+    <path d="M-80 477 C165 335 345 565 635 615 C905 659 1120 476 1446 456" stroke-width="2"/>
+    <path d="M-100 582 C150 432 350 637 595 692 C880 787 1150 642 1466 472"/>
+  </g>
+</svg>

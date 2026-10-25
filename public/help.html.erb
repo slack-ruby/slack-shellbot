@@ -1,18 +1,49 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <title>Shell: Help</title>
     <%= partial 'public/partials/_head.html.erb' %>
   </head>
-  <body>
-    <p class='icon'>
-      <a href='/'><img src='img/icon.png'></a>
-    </p>
-    <div class='help'>
-      <pre>
-        <%= CGI.escapeHTML(SlackShellbot::Commands::Man::HELP) %>
-      </pre>
-    </div>
+  <body class="site-page help-page">
+    <%= partial 'public/partials/_navigation.html.erb' %>
+    <main id="main" class="page-container help-content">
+      <header class="help-header">
+        <h1>Shell: Help</h1>
+        <p class="section-intro">A little help for your channel's command line.</p>
+      </header>
+      <section id="get-started" class="help-section" aria-labelledby="start-title">
+        <h2 id="start-title">Get started</h2>
+        <ol class="getting-started-steps">
+          <li><%= partial 'public/partials/_install_button.html.erb' %> and authorize Shell for your workspace.</li>
+          <li>Invite <code>@sh</code> into a Slack channel.</li>
+          <li>Type <code>man</code> to see the commands, or <code>ls</code> to list files.</li>
+        </ol>
+        <p>Each channel has its own rudimentary file system. This is a shell bot inside Slack, not a connection to your computer's shell.</p>
+      </section>
+      <section class="help-section" aria-labelledby="commands-title">
+        <h2 id="commands-title">Commands &amp; questions</h2>
+        <details id="is-this-a-joke" class="help-topic" open>
+          <summary>Is this a joke?</summary>
+          <p>Yes. Also, it works! Shell is a tiny Unix-like shell inside Slack, because apparently Slack needed a command line. Its commands and per-channel file system really work, but it is a toy, not a remote terminal.</p>
+        </details>
+        <details class="help-topic">
+          <summary>Command reference</summary>
+          <pre><%= CGI.escapeHTML(SlackShellbot::Commands::Man::HELP) %></pre>
+        </details>
+        <details class="help-topic">
+          <summary>How do I create and read a file?</summary>
+          <p>Try <code>touch notes</code> to create a file, <code>ls</code> to see it, and <code>cat notes</code> to read its contents. Use <code>mkdir projects</code> to create a directory.</p>
+        </details>
+        <details class="help-topic">
+          <summary>How do I leave the editor?</summary>
+          <p>The basic <code>vi</code>-like editor updates messages in place. Use <code>:wq</code> to quit and save, or <code>:q</code> to quit without saving.</p>
+        </details>
+      </section>
+      <section id="support" class="help-section" aria-labelledby="support-title">
+        <h2 id="support-title">Need a hand?</h2>
+        <p>Contact <a href="mailto:dblock@vestris.com">dblock@vestris.com</a>, DM <a href="https://twitter.com/playplayio">@playplayio</a>, or <a href="https://github.com/slack-ruby/slack-shellbot/issues">report an issue on GitHub</a>.</p>
+      </section>
+    </main>
     <%= partial 'public/partials/_footer.html.erb' %>
   </body>
 </html>
-

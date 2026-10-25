@@ -1,35 +1,83 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
  <head>
   <title>Shell: A Unix Shell in Every Slack Channel</title>
   <%= partial 'public/partials/_head.html.erb' %>
   <script src="/scripts/register.js"></script>
   <script src="/scripts/status.js"></script>
   <meta name="slack-app-id" content="A01F73M28BF">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <meta name="description" content="Add a rudimentary Unix shell to every Slack channel."/>
+  <meta name="description" content="Add a rudimentary Unix shell to every Slack channel.">
  </head>
- <body>
-  <p class='icon'>
-    <a href="/"><img src='img/icon.png'></a>
-  </p>
-  <p>
-    <h1>Whoa, a bash shell inside Slack!</h1>
-  </p>
-  <p>
-    Creates a rudimentary file system in every channel.<br>Invite the bot into a channel, try <span style="font-family: Courier">man</span>, <span style="font-family: Courier">ls</span>, and other unix commands.
-  </p>
-  <p>&nbsp;</p>
-  <p id='messages' />
-  <p id='register'>
-    <a href="<%= SlackRubyBotServer::Config.oauth_authorize_url %>?scope=<%= SlackRubyBotServer::Config.oauth_scope_s %>&client_id=<%= ENV['SLACK_CLIENT_ID'] %>"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"></a>
-  </p>
-  <p id='active_teams_count'>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p class='image'>
-    <img src='img/shell.gif'>
-  </p>
+ <body class="site-page">
+  <%= partial 'public/partials/_navigation.html.erb' %>
+  <main id="main">
+    <section class="hero page-container" aria-labelledby="hero-title">
+      <div class="hero-intro">
+        <img class="hero-logo" src="/img/icon.png" width="512" height="512" alt="Shell terminal logo">
+        <div>
+          <h1 id="hero-title">Shell for Slack</h1>
+          <p class="hero-tagline">Whoa, a bash shell inside Slack!</p>
+          <p class="hero-description">A rudimentary file system in every channel. Invite the bot into a channel, try <code>man</code>, <code>ls</code>, and other Unix commands.</p>
+          <div class="hero-actions">
+            <p id="register"><%= partial 'public/partials/_install_button.html.erb' %></p>
+            <a class="secondary-button" href="/help.html#get-started">Get started</a>
+            <a class="secondary-button" href="/help.html#is-this-a-joke">Is this a joke?</a>
+          </div>
+          <p id="messages" role="status" aria-live="polite"></p>
+          <p id="active_teams_count" class="team-count" aria-live="polite">&nbsp;</p>
+        </div>
+      </div>
+      <figure class="hero-preview">
+        <img src="/img/shell.gif" width="691" height="419" alt="Shell running Unix commands inside a Slack channel">
+        <figcaption>A little command line, right where your team works.</figcaption>
+      </figure>
+    </section>
+    <section class="homepage-section page-container" id="how-to-use" aria-labelledby="how-title">
+      <h2 id="how-title">A shell in every channel</h2>
+      <p class="section-intro">Your familiar commands. A shared space to try them.</p>
+      <ol class="setup-steps">
+        <li><h3>Add Shell to Slack</h3><p>Connect your workspace using Add to Slack.</p></li>
+        <li><h3>Invite <code>@sh</code></h3><p>Invite the bot into a channel to create its own rudimentary file system.</p></li>
+        <li><h3>Try a command</h3><p>Start with <code>man</code> or <code>ls</code>. Create files, explore directories, or try the basic <code>vi</code> editor.</p></li>
+      </ol>
+      <a class="secondary-button" href="/help.html">Explore the commands</a>
+    </section>
+    <section class="homepage-section page-container" id="more-bots" aria-labelledby="bots-title">
+      <h2 id="bots-title">More bots for Slack and Discord</h2>
+      <p class="section-intro">A little more play, a little more connection.</p>
+      <ul class="bot-cards">
+        <li class="bot-card">
+          <img class="bot-logo" src="/img/bot-slava.png" width="72" height="72" alt="" loading="lazy">
+          <h3>Strava in Slack</h3>
+          <p>Share Strava activities, celebrate every finish, and keep your Slack team moving.</p>
+          <a class="secondary-button" href="https://slava.playplay.io/">Meet Slava</a>
+        </li>
+        <li class="bot-card">
+          <img class="bot-logo" src="/img/bot-strada.png" width="72" height="72" alt="" loading="lazy">
+          <h3>Strava in Discord</h3>
+          <p>Bring your running or cycling club together with Strava activities in Discord.</p>
+          <a class="secondary-button" href="https://strada.playplay.io/">Meet Strada</a>
+        </li>
+        <li class="bot-card">
+          <img class="bot-logo" src="/img/bot-sup.png" width="72" height="72" alt="" loading="lazy">
+          <h3>S'Up for Slack</h3>
+          <p>Meet someone new over coffee with fresh groups of three from your Slack channel each week.</p>
+          <a class="secondary-button" href="https://sup2.playplay.io/">Meet S'Up</a>
+        </li>
+        <li class="bot-card">
+          <img class="bot-logo" src="/img/bot-gamebot.png" width="72" height="72" alt="" loading="lazy">
+          <h3>Leaderboards in Slack</h3>
+          <p>Challenge teammates, report scores, and climb your Slack channel's leaderboard.</p>
+          <a class="secondary-button" href="https://gamebot2.playplay.io/">Meet Gamebot</a>
+        </li>
+      </ul>
+    </section>
+    <section class="homepage-section page-container narrow-container" id="open-source" aria-labelledby="source-title">
+      <h2 id="source-title">Open source</h2>
+      <p>Shell is a shell bot for Slack, built with <a href="https://github.com/slack-ruby/slack-ruby-bot-server-events">slack-ruby-bot-server-events</a>. Explore the code, report an issue, or contribute on <a href="https://github.com/slack-ruby/slack-shellbot">GitHub</a>.</p>
+      <p class="install-cta"><%= partial 'public/partials/_install_button.html.erb' %></p>
+    </section>
+  </main>
   <%= partial 'public/partials/_footer.html.erb' %>
  </body>
 </html>
-
