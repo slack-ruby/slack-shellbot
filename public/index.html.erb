@@ -3,8 +3,8 @@
  <head>
   <title>Shell: A Unix Shell in Every Slack Channel</title>
   <%= partial 'public/partials/_head.html.erb' %>
-  <script src="/scripts/register.js"></script>
-  <script src="/scripts/status.js"></script>
+  <script src="<%= h asset_path('/scripts/register.js') %>"></script>
+  <script src="<%= h asset_path('/scripts/status.js') %>"></script>
   <meta name="slack-app-id" content="A01F73M28BF">
   <meta name="description" content="Add a rudimentary Unix shell to every Slack channel.">
  </head>
@@ -13,7 +13,7 @@
   <main id="main">
     <section class="hero page-container" aria-labelledby="hero-title">
       <div class="hero-intro">
-        <img class="hero-logo" src="/img/icon.png" width="512" height="512" alt="Shell terminal logo">
+        <img class="hero-logo" src="<%= h asset_path('/img/icon.png') %>" width="512" height="512" alt="Shell terminal logo">
         <div>
           <h1 id="hero-title">Shell for Slack</h1>
           <p class="hero-tagline">Whoa, a bash shell inside Slack!</p>
@@ -28,7 +28,7 @@
         </div>
       </div>
       <figure class="hero-preview">
-        <img src="/img/shell.gif" width="691" height="419" alt="Shell running Unix commands inside a Slack channel">
+        <img src="<%= h asset_path('/img/shell.gif') %>" width="691" height="419" alt="Shell running Unix commands inside a Slack channel">
         <figcaption>A little command line, right where your team works.</figcaption>
       </figure>
     </section>
@@ -47,25 +47,25 @@
       <p class="section-intro">A little more play, a little more connection.</p>
       <ul class="bot-cards">
         <li class="bot-card">
-          <img class="bot-logo" src="/img/bot-slava.png" width="72" height="72" alt="" loading="lazy">
+          <img class="bot-logo" src="<%= h asset_path('/img/bot-slava.png') %>" width="72" height="72" alt="" loading="lazy">
           <h3>Strava in Slack</h3>
           <p>Share Strava activities, celebrate every finish, and keep your Slack team moving.</p>
           <a class="secondary-button" href="https://slava.playplay.io/">Meet Slava</a>
         </li>
         <li class="bot-card">
-          <img class="bot-logo" src="/img/bot-strada.png" width="72" height="72" alt="" loading="lazy">
+          <img class="bot-logo" src="<%= h asset_path('/img/bot-strada.png') %>" width="72" height="72" alt="" loading="lazy">
           <h3>Strava in Discord</h3>
           <p>Bring your running or cycling club together with Strava activities in Discord.</p>
           <a class="secondary-button" href="https://strada.playplay.io/">Meet Strada</a>
         </li>
         <li class="bot-card">
-          <img class="bot-logo" src="/img/bot-sup.png" width="72" height="72" alt="" loading="lazy">
+          <img class="bot-logo" src="<%= h asset_path('/img/bot-sup.png') %>" width="72" height="72" alt="" loading="lazy">
           <h3>S'Up for Slack</h3>
           <p>Meet someone new over coffee with fresh groups of three from your Slack channel each week.</p>
           <a class="secondary-button" href="https://sup2.playplay.io/">Meet S'Up</a>
         </li>
         <li class="bot-card">
-          <img class="bot-logo" src="/img/bot-gamebot.png" width="72" height="72" alt="" loading="lazy">
+          <img class="bot-logo" src="<%= h asset_path('/img/bot-gamebot.png') %>" width="72" height="72" alt="" loading="lazy">
           <h3>Leaderboards in Slack</h3>
           <p>Challenge teammates, report scores, and climb your Slack channel's leaderboard.</p>
           <a class="secondary-button" href="https://gamebot2.playplay.io/">Meet Gamebot</a>

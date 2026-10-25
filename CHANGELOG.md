@@ -1,5 +1,6 @@
 ### Changelog
 
+* 2026/10/25: [#88](https://github.com/slack-ruby/slack-shellbot/pull/88): Upgrade slack-ruby-bot-server to 2.3.0 and rack-server-pages to 0.3.0, version website assets by content, and configure template revalidation centrally to prevent stale browser assets after deployments - [@dblock](https://github.com/dblock), [@Copilot](https://github.com/apps/copilot-swe-agent).
 * 2026/10/25: [#87](https://github.com/slack-ruby/slack-shellbot/pull/87): Redesign the Shell website with shared responsive layouts, charcoal ribbon artwork, a black-bordered animated demo, an "Is this a joke?" FAQ linked from the homepage, and recommendations with original logos for Slava, Strada, Gamebot, and S'Up above Open source while preserving Slack installation and status flows - [@dblock](https://github.com/dblock), [@Copilot](https://github.com/apps/copilot-swe-agent).
 * 2026/10/24: [#86](https://github.com/slack-ruby/slack-shellbot/pull/86): Upgrade slack-ruby-bot-server to 2.2.1 to fix Grape error handling for unsupported requests and failing health checks - [@dblock](https://github.com/dblock), [@Copilot](https://github.com/apps/copilot-swe-agent).
 * 2026/10/23: Upgrade to Ruby 4.0.9 and refresh dependencies and CI browser tooling - [@dblock](https://github.com/dblock), [@Copilot](https://github.com/apps/copilot-swe-agent).
